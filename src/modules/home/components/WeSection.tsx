@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
+import banner from '../images/weBanner.jpg'
 
 const WeSection: FC = () => {
     return (
@@ -11,9 +12,9 @@ const WeSection: FC = () => {
                         En Zephyra, nos dedicamos a ayudar a empresas y organizaciones a implementar estrategias sostenibles que generen un impacto positivo en la sociedad, el medio ambiente y la economía.
                     </p>
                 </div>
-                <div className="hidden md:block absolute right-0 top-0 w-1/3 h-full">
+                <div className="hidden md:block absolute right-10 top-0 w-1/3 h-full">
                     <Image
-                        src="/placeholder.svg?height=300&width=400"
+                        src={banner}
                         alt="Equipo de Zephyra trabajando en proyectos sostenibles"
                         layout="fill"
                         objectFit="cover"
