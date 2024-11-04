@@ -1,6 +1,4 @@
-import clsx from "clsx";
 import { FC, HTMLAttributes } from "react";
-import { Button } from "./ui/Button";
 import Logo from "./Logo";
 import Navlink from "./Navlink";
 
