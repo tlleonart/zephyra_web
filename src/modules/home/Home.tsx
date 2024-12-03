@@ -2,7 +2,6 @@ import { FC } from "react";
 import TopSection from "./components/TopSection";
 import WeSection from "./components/WeSection";
 import ServicesSection from "./components/ServicesSection";
-import ProjectsSection from "./components/ProjectsSection";
 import ClientsSection from "./components/ClientsSection";
 
 const Home: FC = () => {

@@ -1,5 +1,5 @@
 import { LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { FC } from "react";
 
 const Footer: FC = () => {
