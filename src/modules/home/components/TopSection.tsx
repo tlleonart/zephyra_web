@@ -18,7 +18,7 @@ const TopSection: FC = () => {
                         Crecimiento y transformación en contextos desafiantes
                     </p>
                 </div>
-            </div>Z
+            </div>
         </section>
     )
 }

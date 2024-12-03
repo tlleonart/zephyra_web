@@ -3,21 +3,21 @@ import { Navlink } from "../components/Navbar";
 export const headerLinks: Navlink[] = [
     {
         text: 'Quienes somos',
-        href: '/about'
+        href: '#about'
     }, {
         text: 'Servicios',
-        href: '/services'
+        href: '#services'
     }, {
         text: 'Proyectos',
-        href: 'projects'
+        href: '#projects'
     }, {
         text: 'Involucrate',
-        href: '/involve'
+        href: '#involve'
     }, {
         text: 'Contacto',
-        href: '/contact'
+        href: '#contact'
     }, {
         text: 'Blog',
-        href: '/blog'
+        href: '#blog'
     },
 ]
