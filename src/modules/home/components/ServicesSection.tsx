@@ -5,7 +5,8 @@ const ServicesSection: FC = () => {
     return (
         <section className="mb-12 bg-zmain" id='services'>
             <div className="container mx-auto px-4 pb-10">
-                <h2 className="text-3xl font-semibold text-white p-10 text-center">Nuestros Servicios</h2>
+                <h2 className="text-3xl font-semibold text-white pt-10 text-center">Servicios</h2>
+                <div className="border-t-[1px] w-full border-white mb-10" />
                 <div className="grid md:grid-cols-3 gap-6">
                     {[
                         {

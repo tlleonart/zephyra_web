@@ -13,7 +13,7 @@ const WeSection: FC = () => {
                             una realidad tangible para empresas y organizaciones públicas y privadas.
                         </p>
                         <p className="text-gray-700 text-center">
-                            Asumimos el reto de generar ccreimiento y transformación en contextos desafiantes,
+                            Asumimos el reto de generar crecimiento y transformación en contextos desafiantes,
                             otorgándoles valor agregado a las organizaciones y generando soluciones innovadoras
                             y sostenibles.
                         </p>

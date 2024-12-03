@@ -7,17 +7,17 @@ export const headerLinks: Navlink[] = [
     }, {
         text: 'Servicios',
         href: '#services'
-    }, {
+    }, /* {
         text: 'Proyectos',
         href: '#projects'
+    }, */ {
+        text: 'Clientes',
+        href: '#clients'
     }, {
-        text: 'Involucrate',
-        href: '#involve'
+        text: 'Alianzas',
+        href: '#aliances'
     }, {
         text: 'Contacto',
         href: '#contact'
-    }, {
-        text: 'Blog',
-        href: '#blog'
     },
 ]

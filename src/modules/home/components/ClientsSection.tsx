@@ -2,10 +2,23 @@ import Image from "next/image";
 import { FC } from "react";
 
 const ClientsSection: FC = () => {
+    const clientes = [
+        {
+            name: 'Limansky S.A.',
+            image: 'srcImg'
+        }, {
+            name: 'Cibic',
+            image: 'srcImg'
+        }, {
+            name: 'Mercado de Gafas',
+            image: 'srcImg'
+        },
+    ]
+
     return (
-        <section className="mb-12">
+        <section className="mb-12 min-h-screen" id='clients'>
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-semibold text-[#213C2F] mb-4">Nuestros Clientes</h2>
+                <h2 className="text-3xl font-semibold text-[#213C2F] mb-4">Clientes</h2>
                 <div className="flex flex-wrap justify-center gap-4">
                     {[1, 2, 3, 4].map((client) => (
                         <div

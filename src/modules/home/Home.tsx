@@ -12,7 +12,7 @@ const Home: FC = () => {
                 <TopSection />
                 <WeSection />
                 <ServicesSection />
-                <ProjectsSection />
+                {/* <ProjectsSection /> */}
                 <ClientsSection />
             </div>
         </main>

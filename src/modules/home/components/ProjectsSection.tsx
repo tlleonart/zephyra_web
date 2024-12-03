@@ -3,9 +3,10 @@ import { FC } from "react";
 
 const ProjectsSection: FC = () => {
     return (
-        <section className="mb-12">
+        <section className="mb-12" id='projects'>
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-semibold text-[#213C2F] mb-4">Proyectos Destacados</h2>
+                <h2 className="text-3xl font-semibold text-zmain mb-4 text-center">Proyectos</h2>
+                <div className="border-t-[1px] w-full border-zmain mb-10" />
                 <div className="grid md:grid-cols-2 gap-6">
                     {[
                         {

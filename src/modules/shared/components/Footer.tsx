@@ -23,13 +23,6 @@ const Footer: FC = () => {
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h3 className="text-xl font-semibold mb-4">Ubicación</h3>
-                    <p className="flex items-center">
-                        <MapPin className="mr-2" size={18} />
-                        Calle Principal 123, Ciudad, País
-                    </p>
-                </div>
             </div>
         </footer>
     )
