@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import { headerLinks } from "../lib/header-links"
 
 const Header: FC = () => {
+    // TODO: CONVERTIR EN FIXED
+
     return (
         <header className="text-white bg-zmain p-12">
             <Navbar navLinks={headerLinks} variant="header" />
