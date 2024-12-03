@@ -16,8 +16,8 @@ const Logo: FC<LogoProps> = ({ variant = 'nav' }) => {
             <Image
                 src={logo}
                 alt="Zephyra Logo"
-                width={120}
-                height={40}
+                width={240}
+                height={80}
                 priority
             />
         </Link>

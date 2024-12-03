@@ -7,7 +7,7 @@ const WeSection: FC = () => {
         <section className="mb-12 relative">
             <div className="container mx-auto px-4">
                 <div className="md:w-2/3">
-                    <h2 className="text-3xl font-semibold text-[#213C2F] mb-4">Nosotros</h2>
+                    <h2 className="text-4xl font-semibold text-[#213C2F] mb-4">Nosotros</h2>
                     <p className="text-gray-700">
                         En Zephyra, nos dedicamos a ayudar a empresas y organizaciones a implementar estrategias sostenibles que generen un impacto positivo en la sociedad, el medio ambiente y la economía.
                     </p>

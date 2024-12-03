@@ -11,11 +11,11 @@ const Footer: FC = () => {
                     <ul className="space-y-2">
                         <li className="flex items-center">
                             <Phone className="mr-2" size={18} />
-                            <a href="tel:+123456789" className="hover:underline">+54 9 341 316-0008 / +54 9 341 587-8506</a>
+                            <a href="tel:+5493413160008" className="hover:underline">+54 9 341 316-0008 / +54 9 341 587-8506</a>
                         </li>
                         <li className="flex items-center">
                             <Mail className="mr-2" size={18} />
-                            <a href="mailto:info@zephyra.com" className="hover:underline">info@zephyra.com</a>
+                            <a href="mailto:zephyracs.info@gmail.com" className="hover:underline">zephyracs.info@gmail.com</a>
                         </li>
                         <li className="flex items-center">
                             <LinkedInLogoIcon className="mr-2" />
