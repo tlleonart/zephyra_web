@@ -5,8 +5,8 @@ import ContactForm from "./ContactForm";
 
 const Footer: FC = () => {
     return (
-        <footer className="bg-[#213C2F] text-white p-8 flex justify-between items-center" id="contact">
-            <div className="container mx-auto grid md:grid-cols-2 gap-8">
+        <footer className="bg-[#213C2F] text-white p-8 flex flex-col md:flex-row justify-between items-center gap-8" id="contact">
+            <div className="container mx-auto grid grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-semibold mb-4">Contacto</h3>
                     <ul className="space-y-2">

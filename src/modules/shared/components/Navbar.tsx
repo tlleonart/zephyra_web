@@ -18,7 +18,7 @@ const Navbar: FC<NavbarProps> = ({ navLinks }) => {
     return (
         <nav className="container mx-auto flex fl   ex-wrap justify-between items-center">
             <Logo />
-            <ul className="flex flex-wrap space-x-4">
+            <ul className="hidden md:flex md:flex-wrap md:space-x-4">
                 {navLinks.map((link, index) => (
                     <Navlink text={link.text} href={link.href} key={index} />
                 ))}
