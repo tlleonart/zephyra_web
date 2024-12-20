@@ -20,7 +20,7 @@ const ContactForm: FC = () => {
     const [error, setError] = useState<string | null>(null)
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setMessage((prevValues) => ({
+        setMessage(() => ({
             ...message,
             [event.target.name]: event.target.value
         }))
@@ -57,6 +57,7 @@ const ContactForm: FC = () => {
             </div>) : (
                 <h1 className="text-lg font-bold">¡Contacto enviado correctamente!</h1>
             )}
+            {error && <p>{error}</p>}
         </form>
     )
 }

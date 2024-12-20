@@ -72,7 +72,7 @@ const membersSection: FC = () => {
                                 specialty,
                                 imgSrc
                             }) => (
-                                <div className="flex flex-col gap-2">
+                                <div className="flex flex-col gap-2" key={name}>
                                     <div className="w-full overflow-hidden aspect-square relative">
                                         <Image src={imgSrc} alt={`${name} image`} />
                                         <div className="absolute top-0 w-full h-full bg-black text-white text-center flex flex-col justify-center opacity-0 bg-opacity-0 hover:bg-opacity-65 hover:cursor-pointer hover:opacity-100 transition-all duration-500 px-2">
