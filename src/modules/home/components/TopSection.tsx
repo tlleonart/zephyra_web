@@ -4,7 +4,7 @@ import banner from '../images/welcomeBanner.jpeg'
 
 const TopSection: FC = () => {
     return (
-        <section className="mb-12">
+        <section>
             <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px]">
                 <Image
                     src={banner}

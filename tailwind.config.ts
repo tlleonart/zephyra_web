@@ -11,6 +11,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
+				white: '#E5DFD5',
 				zmain: '#1E3C2E',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

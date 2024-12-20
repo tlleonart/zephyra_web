@@ -2,8 +2,11 @@ import { Navlink } from "../components/Navbar";
 
 export const headerLinks: Navlink[] = [
     {
-        text: 'Quienes somos',
+        text: 'Qué hacemos',
         href: '#about'
+    }, {
+        text: 'Equipo',
+        href: '#team'
     }, {
         text: 'Servicios',
         href: '#services'
