@@ -5,9 +5,7 @@ import estefania from '../images/estefania.jpeg'
 import juana from '../images/juana.jpeg'
 import magdalena from '../images/magdalena.png'
 import martina from '../images/martina.jpeg'
-import melisa from '../images/melisa.jpeg'
 import natalia from '../images/natalia.jpg'
-import logo from '../../shared/images/flor_light_big.png'
 
 const membersSection: FC = () => {
     interface member {
@@ -44,11 +42,6 @@ const membersSection: FC = () => {
             rol: 'Consultora',
             specialty: 'Especialista en Implementación y Aditoría de Sistemas de Gestión ISO 9001 y 14001',
             imgSrc: estefania
-        }, {
-            name: 'Melisa Grisanti',
-            rol: 'Consultora',
-            specialty: 'Licenciada en Ciencias del Ambiente - Especialista en Medición de Huella de Carbono',
-            imgSrc: melisa
         },
         {
             name: 'Magdalena Blaha',
@@ -65,7 +58,7 @@ const membersSection: FC = () => {
                     <div className="flex flex-col w-full justify-center">
                         <h2 className="text-4xl font-semibold text-zmain text-center mb-4">Nuestro equipo</h2>
                         <div className="border-t-[1px] w-full border-zmain mb-10" />
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 w-full">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full lg:w-2/3 mx-auto">
                             {members.map(({
                                 name,
                                 rol,
@@ -84,13 +77,13 @@ const membersSection: FC = () => {
                                     </div>
                                 </div>
                             ))}
-                            <div className="flex flex-col gap-2 p-10 justify-center bg-white items-center">
+                            {/* <div className="flex flex-col gap-2 p-10 justify-center bg-white items-center">
                                 <div className="flex justify-center items-center w-full h-full">
                                     <div className="w-full overflow-hidden aspect-square relative">
                                         <Image src={logo} alt="Zephyra logo" fill />
                                     </div>
                                 </div>
-                            </div>
+                            </div>*/ }
                         </div>
                     </div>
                 </div>
