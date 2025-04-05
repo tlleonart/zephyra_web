@@ -1,23 +1,40 @@
+import Image from "next/image";
 import { FC } from "react";
-import TopSection from "./components/TopSection";
-import WeSection from "./components/WeSection";
-import ServicesSection from "./components/ServicesSection";
-import ClientsSection from "./components/ClientsSection";
-import TeamSection from "./components/TeamSection";
 
-const Home: FC = () => {
-    return (
-        <main className="flex-grow bg-white">
-            <div>
-                <TopSection />
-                <WeSection />
-                <TeamSection />
-                <ServicesSection />
-                {/* <ProjectsSection /> */}
-                <ClientsSection />
-            </div>
-        </main>
-    )
-}
+import background from "@/modules/home/images/background.jpg";
+import {
+  ProjectsSection,
+  ServicesSection,
+  WelcomeSection,
+  ClientsSection,
+  TeamSection,
+  BlogSection,
+} from "@/modules/home/components/";
 
-export default Home
+export const Home: FC = () => {
+  return (
+    <main className="relative">
+      <div className="absolute inset-0 z-0 h-screen">
+        <Image
+          src={background}
+          alt="Background"
+          fill
+          priority
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+          }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      <div className="relative z-10">
+        <WelcomeSection />
+        <ServicesSection />
+        <BlogSection />
+        <ProjectsSection />
+        <TeamSection />
+        <ClientsSection />
+      </div>
+    </main>
+  );
+};

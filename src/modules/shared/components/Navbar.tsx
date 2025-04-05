@@ -1,30 +1,32 @@
 import { FC, HTMLAttributes } from "react";
-import Logo from "./Logo";
 import Navlink from "./Navlink";
+import { Button } from "./ui/Button";
+import Link from "next/link";
 
-type NavbarVariant = 'header'
+type NavbarVariant = "header";
 
 export type Navlink = {
-    text: string,
-    href: string,
-}
+  text: string;
+  href: string;
+};
 
 interface NavbarProps extends HTMLAttributes<HTMLDivElement> {
-    navLinks: Navlink[],
-    variant: NavbarVariant
+  navLinks: Navlink[];
+  variant: NavbarVariant;
 }
 
-const Navbar: FC<NavbarProps> = ({ navLinks }) => {
-    return (
-        <nav className="container mx-auto flex fl   ex-wrap justify-between items-center">
-            <Logo />
-            <ul className="hidden md:flex md:flex-wrap md:space-x-4">
-                {navLinks.map((link, index) => (
-                    <Navlink text={link.text} href={link.href} key={index} />
-                ))}
-            </ul>
-        </nav>
-    )
-}
-
-export default Navbar
+export const Navbar: FC<NavbarProps> = ({ navLinks }) => {
+  return (
+    <nav className="flex justify-between">
+      {navLinks.map((link, index) => (
+        <Button
+          key={index}
+          className="h-full w-full rounded-none text-white cursor-pointer"
+          variant="link"
+        >
+          <Link href={link.href}>{link.text}</Link>
+        </Button>
+      ))}
+    </nav>
+  );
+};
