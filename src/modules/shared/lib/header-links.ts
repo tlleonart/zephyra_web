@@ -30,6 +30,6 @@ export const headerLinks: Navlink[] = [
   },
   {
     text: "Blog",
-    href: "/blog",
+    href: "#blog",
   },
 ];

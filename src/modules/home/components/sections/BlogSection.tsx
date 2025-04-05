@@ -5,7 +5,10 @@ import { BlogCard } from "../BlogCard";
 
 export const BlogSection: FC = () => {
   return (
-    <Section className="pt-20 md:pt-32 px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center flex-col gap-10">
+    <Section
+      className="pt-20 md:pt-32 px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center flex-col gap-10"
+      id="section"
+    >
       <div className="w-full">
         <h3>Blog</h3>
         <div className="w-full border-t-2 border-black my-2" />
