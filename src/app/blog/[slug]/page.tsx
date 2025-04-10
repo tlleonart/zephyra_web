@@ -1,13 +1,15 @@
 import { Blog } from "@/modules/blog/Blog";
+import { Suspense } from "react";
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = params;
-
-  return <Blog slug={slug} />;
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return (
+    <Suspense>
+      <Blog slug={slug} />
+    </Suspense>
+  );
 }

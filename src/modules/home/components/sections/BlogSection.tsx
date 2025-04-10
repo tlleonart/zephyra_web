@@ -6,8 +6,8 @@ import { BlogCard } from "../BlogCard";
 export const BlogSection: FC = () => {
   return (
     <Section
-      className="pt-20 md:pt-32 px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center flex-col gap-10"
-      id="section"
+      className="pt-20 md:pt-32 px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center flex-col gap-10 mb-20"
+      id="blog"
     >
       <div className="w-full">
         <h3>Blog</h3>

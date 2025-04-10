@@ -30,9 +30,9 @@ export const Home: FC = () => {
       <div className="relative z-10">
         <WelcomeSection />
         <ServicesSection />
-        <BlogSection />
         <ProjectsSection />
         <TeamSection />
+        <BlogSection />
         <ClientsSection />
       </div>
     </main>

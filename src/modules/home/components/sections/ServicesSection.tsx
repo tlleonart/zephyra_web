@@ -1,5 +1,5 @@
 import { Section } from "@/modules/shared/components/ui/section";
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { ServicesCarousel } from "../ServicesCarousel";
 
 export const ServicesSection: FC = () => {
@@ -25,7 +25,9 @@ export const ServicesSection: FC = () => {
       </div>
       <div className="w-full mt-5" id="services">
         <h1 className="text-3xl font-semibold mb-5">Nuestros servicios.</h1>
-        <ServicesCarousel />
+        <Suspense>
+          <ServicesCarousel />
+        </Suspense>
       </div>
     </Section>
   );

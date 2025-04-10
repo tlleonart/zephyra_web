@@ -6,17 +6,22 @@ export const headerLinks: Navlink[] = [
     href: "#about",
   },
   {
+    text: "Servicios",
+    href: "#services",
+  },
+  {
+    text: "Proyectos",
+    href: "#projects",
+  },
+  {
     text: "Equipo",
     href: "#team",
   },
   {
-    text: "Servicios",
-    href: "#services",
+    text: "Blog",
+    href: "#blog",
   },
-  /* {
-        text: 'Proyectos',
-        href: '#projects'
-    }, */ {
+  {
     text: "Clientes",
     href: "#clients",
   },
@@ -27,9 +32,5 @@ export const headerLinks: Navlink[] = [
   {
     text: "Contacto",
     href: "#contact",
-  },
-  {
-    text: "Blog",
-    href: "#blog",
   },
 ];

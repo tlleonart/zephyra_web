@@ -1,5 +1,5 @@
 import { InstagramLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { FC } from "react";
 import ContactForm from "./ContactForm";
 
@@ -16,7 +16,7 @@ export const Footer: FC = () => {
             <li className="flex items-center">
               <Phone className="mr-2" size={18} />
               <a href="tel:+5493413160008" className="hover:underline">
-                +54 9 341 316-0008 / +54 9 341 587-8506
+                +54 9 341 316-0008 / +34 600 290 414
               </a>
             </li>
             <li className="flex items-center">
@@ -47,6 +47,10 @@ export const Footer: FC = () => {
               >
                 Instagram
               </a>
+            </li>
+            <li className="flex items-center">
+              <MapPin className="mr-2" size={18} />
+              Argentina / España
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, Suspense } from "react";
 import { ServicesCarouselContactButton } from "./ServicesCarouselContactButton";
 
 interface ServicesCarouselCardProps {
@@ -21,7 +21,9 @@ export const ServicesCarouselCard: FC<ServicesCarouselCardProps> = ({
         </div>
         <div className="absolute p-8 inset-0 flex flex-col opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <p className="text-white flex-grow">{description}</p>
-          <ServicesCarouselContactButton />
+          <Suspense>
+            <ServicesCarouselContactButton />
+          </Suspense>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { employees } from "@/modules/shared/lib/employees";
 export const TeamSection: FC = () => {
   return (
     <Section
-      className="px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center flex-col gap-10 mb-20"
+      className="px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center flex-col gap-10 mb-10"
       id="team"
     >
       <div className="w-full">
