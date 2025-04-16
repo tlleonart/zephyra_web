@@ -3,34 +3,34 @@ import { Navlink } from "../components/Navbar";
 export const headerLinks: Navlink[] = [
   {
     text: "Qué hacemos",
-    href: "#about",
+    href: "/#about",
   },
   {
     text: "Servicios",
-    href: "#services",
+    href: "/#services",
   },
   {
     text: "Proyectos",
-    href: "#projects",
+    href: "/#projects",
   },
   {
     text: "Equipo",
-    href: "#team",
+    href: "/#team",
   },
   {
     text: "Blog",
-    href: "#blog",
+    href: "/#blog",
   },
   {
     text: "Clientes",
-    href: "#clients",
+    href: "/#clients",
   },
   {
     text: "Alianzas",
-    href: "#aliances",
+    href: "/#aliances",
   },
   {
     text: "Contacto",
-    href: "#contact",
+    href: "/#contact",
   },
 ];
