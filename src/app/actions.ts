@@ -18,11 +18,14 @@ export async function enviarFormulario(
   }
 
   try {
-    const response = await fetch("http://localhost:3000/api/send-mail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, content }),
-    });
+    const response = await fetch(
+      "https://zephyraconsultora.com/api/send-mail",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, content }),
+      }
+    );
 
     if (!response.ok) {
       return {
