@@ -10,6 +10,7 @@ import {
   TeamSection,
   BlogSection,
 } from "@/modules/home/components/";
+import { NewsletterForm } from "../shared/components/NewsletterForm";
 
 export const Home: FC = () => {
   return (
@@ -33,6 +34,7 @@ export const Home: FC = () => {
         <ProjectsSection />
         <TeamSection />
         <BlogSection />
+        <NewsletterForm />
         <ClientsSection />
       </div>
     </main>

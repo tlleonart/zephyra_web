@@ -1,3 +1,7 @@
+"use server";
+
+import prisma from "../../lib/prisma";
+
 type ActionResult = {
   success?: boolean;
   message?: string;
@@ -38,5 +42,34 @@ export async function enviarFormulario(
   } catch (error) {
     console.error(error);
     return { error: "Error al enviar contacto." };
+  }
+}
+
+export async function suscribeToNewsletter(
+  formData: FormData
+): Promise<ActionResult> {
+  const email = formData.get("email") as string;
+
+  try {
+    const result = await prisma.newsletter.create({
+      data: {
+        email,
+      },
+    });
+
+    if (!result) {
+      return {
+        success: false,
+        message: "Error al suscribirse al newsletter.",
+      };
+    }
+
+    return {
+      success: true,
+      message: "Suscripción al newsletter exitosa!",
+    };
+  } catch (error) {
+    console.error(error);
+    return { success: false, error: "Error al suscribirse al newsletter." };
   }
 }
