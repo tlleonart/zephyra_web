@@ -29,8 +29,8 @@ export const ClientsSection: FC = () => {
           </div>
         </div>
         <div className="flex flex-col w-full text-center" id="aliances">
-          <h1 className="text-3xl">Alianzas</h1>
-          <div className="flex w-full bg-white justify-center">
+          <h1 className="text-3xl w-full">Alianzas</h1>
+          <div className="flex w-full bg-white justify-around my-10">
             {aliances.map(({ name, logo, href }) => (
               <div
                 key={name}
