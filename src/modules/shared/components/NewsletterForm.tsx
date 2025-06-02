@@ -55,7 +55,7 @@ export const NewsletterForm: FC = () => {
             name="email"
             placeholder="Ingresa tu correo eletrónico..."
             required
-            className="m-4 p-2 placeholder:text-sm border-none w-[500px] h-12"
+            className="m-4 p-2 placeholder:text-sm border-none w-[500px] h-12 text-black"
           />
           <Button
             type="submit"
