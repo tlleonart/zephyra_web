@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "../../lib/prisma";
+import { PrismaClientKnownRequestError } from "./generated/prisma/runtime/library";
 
 type ActionResult = {
   success?: boolean;
@@ -57,6 +58,8 @@ export async function suscribeToNewsletter(
       },
     });
 
+    console.log(result);
+
     if (!result) {
       return {
         success: false,
@@ -69,7 +72,17 @@ export async function suscribeToNewsletter(
       message: "Suscripción al newsletter exitosa!",
     };
   } catch (error) {
-    console.error(error);
+    if (error instanceof PrismaClientKnownRequestError) {
+      console.log("Error de prisma conocido: ", error.code);
+      if (error.code === "P2002") {
+        console.log("Error de duplicado de email: ", error.meta);
+        return {
+          success: false,
+          error: "Este correo ya está suscrito al newsletter.",
+        };
+      }
+    }
+
     return { success: false, error: "Error al suscribirse al newsletter." };
   }
 }

@@ -64,7 +64,9 @@ export const NewsletterForm: FC = () => {
           >
             {isLoading ? "Suscribiendo..." : "Suscribirme"}
           </Button>
-          {error && <p className="text-red-500">{error}</p>}
+          {error && (
+            <p className="m-4 p-2 bg-red-500 rounded-lg text-sm">{error}</p>
+          )}
         </form>
       ) : (
         <h1>¡Suscripción exitosa!</h1>
