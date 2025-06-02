@@ -22,10 +22,10 @@ export const Footer: FC = () => {
             <li className="flex items-center">
               <Mail className="mr-2" size={18} />
               <a
-                href="mailto:zephyracs.info@gmail.com"
+                href="mailto:info@zephyraconsultora.com"
                 className="hover:underline"
               >
-                zephyracs.info@gmail.com
+                info@zephyraconsultora.com
               </a>
             </li>
             <li className="flex items-center">

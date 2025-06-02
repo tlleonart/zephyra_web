@@ -1,9 +1,9 @@
 import { StaticImageData } from "next/image";
 
-import limansky from "@/modules/home/images/limansky.jpeg";
-import cibic from "@/modules/home/images/cibic.jpg";
-import mdg from "@/modules/home/images/mdg.png";
-import colectar from "@/modules/home/images/colectar.png";
+import limansky from "@/modules/home/images/limansky.webp";
+import cibic from "@/modules/home/images/cibic.webp";
+import mdg from "@/modules/home/images/mdg.webp";
+import colectar from "@/modules/home/images/colectar.webp";
 
 export type client = {
   name: string;

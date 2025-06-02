@@ -43,7 +43,7 @@ export const NewsletterForm: FC = () => {
   };
 
   return (
-    <div className="w-full flex bg-blue-500 text-white justify-start items-center align-middle p-10 my-20">
+    <div className="w-full flex bg-blue-500 text-white justify-start items-center align-middle p-10">
       {!suscribed ? (
         <form onSubmit={handleSuscribe}>
           <h1 className="font-semibold text-3xl m-4">

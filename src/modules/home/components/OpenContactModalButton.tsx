@@ -20,7 +20,7 @@ export const OpenContactModalButton: FC<OpenContactModalButtonProps> = ({
     <Button
       variant="outline"
       onClick={open}
-      className={cn(variant === "projects" && "")}
+      className={cn(variant === "projects" && "text-zmain rounded-none")}
     >
       {children}
     </Button>

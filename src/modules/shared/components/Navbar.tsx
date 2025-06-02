@@ -21,7 +21,7 @@ export const Navbar: FC<NavbarProps> = ({ navLinks }) => {
       {navLinks.map((link, index) => (
         <Button
           key={index}
-          className="h-full w-full rounded-none text-white cursor-pointer"
+          className="h-full w-full rounded-none text-white cursor-pointer decoration-zmain decoration-2"
           variant="link"
         >
           <Link href={link.href}>{link.text}</Link>

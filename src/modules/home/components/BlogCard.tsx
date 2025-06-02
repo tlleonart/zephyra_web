@@ -28,7 +28,7 @@ export const BlogCard: FC<BlogCardProps> = ({ blogPost }) => {
             <span className="mx-2">•</span>
             <span>{author}</span>
           </div>
-          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <h3 className="text-xl font-semibold mb-2 text-zmain">{title}</h3>
           <p className="text-gray-600 mb-4 flex-grow">{excerpt}</p>
           <div className="text-teal-600 font-medium flex items-center">
             Leer más

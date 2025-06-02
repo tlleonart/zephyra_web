@@ -34,8 +34,8 @@ export const Home: FC = () => {
         <ProjectsSection />
         <TeamSection />
         <BlogSection />
-        <NewsletterForm />
         <ClientsSection />
+        <NewsletterForm />
       </div>
     </main>
   );
