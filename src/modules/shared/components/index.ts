@@ -4,7 +4,6 @@ export * from "./Footer";
 export * from "./Logo";
 export * from "./Navbar";
 export * from "./Navlink";
-export * from "./header/Header";
 export * from "./ui/Button";
 export * from "./ui/accordion";
 export * from "./ui/section";

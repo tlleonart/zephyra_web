@@ -5,12 +5,12 @@ import background from "@/modules/home/images/background.jpg";
 import {
   ProjectsSection,
   ServicesSection,
-  WelcomeSection,
   ClientsSection,
-  TeamSection,
   BlogSection,
 } from "@/modules/home/components/";
 import { NewsletterForm } from "../shared/components/NewsletterForm";
+import { WelcomeSection } from "./components/sections/welcome-section/welcome-section";
+import { TeamSection } from "./components/sections/team-section/team-section";
 
 export const Home: FC = () => {
   return (

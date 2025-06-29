@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import {
-  Header,
-  Footer,
-  BackgroundDecoration,
-} from "@/modules/shared/components/";
+import { Footer, BackgroundDecoration } from "@/modules/shared/components/";
 import { NuqsAdapter } from "nuqs/adapters/next";
 import { ModalContainer } from "@/modules/shared/components/modals/ModalContainer";
+import { Header } from "@/modules/shared/components/header/header";
 
 const monserrat = Montserrat({ subsets: ["latin"] });
 

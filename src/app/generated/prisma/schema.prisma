@@ -4,13 +4,44 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Newsletter {
   id     Int     @id @default(autoincrement())
   email  String  @unique
   status Boolean @default(true)
+}
+
+model Employee {
+  id        Int    @id @default(autoincrement())
+  role      String
+  name      String
+  specialty String
+  image     String
+  Blog      Blog[]
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  excerpt   String
+  content   String
+  image     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  Int
+  author    Employee @relation(fields: [authorId], references: [id])
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  excerpt     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  slug        String   @unique
+  image       String?
 }
