@@ -4,7 +4,7 @@ import "./globals.css";
 import { Footer, BackgroundDecoration } from "@/modules/shared/components/";
 import { NuqsAdapter } from "nuqs/adapters/next";
 import { ModalContainer } from "@/modules/shared/components/modals/ModalContainer";
-import { Header } from "@/modules/shared/components/header/header";
+import { Header } from "@/modules/shared/components/header/header-component";
 
 const monserrat = Montserrat({ subsets: ["latin"] });
 
