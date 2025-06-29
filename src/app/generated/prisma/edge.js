@@ -200,7 +200,7 @@ const config = {
   },
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Newsletter {\n  id     Int     @id @default(autoincrement())\n  email  String  @unique\n  status Boolean @default(true)\n}\n\nmodel Employee {\n  id        Int    @id @default(autoincrement())\n  role      String\n  name      String\n  specialty String\n  image     String\n  Blog      Blog[]\n}\n\nmodel Blog {\n  id        Int      @id @default(autoincrement())\n  title     String\n  excerpt   String\n  content   String\n  image     String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  authorId  Int\n  author    Employee @relation(fields: [authorId], references: [id])\n}\n\nmodel Project {\n  id          Int      @id @default(autoincrement())\n  title       String\n  description String\n  excerpt     String\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n  slug        String   @unique\n  image       String?\n}\n",
   "inlineSchemaHash": "b9769bc146a15af57557797cd45d4d1f7a9cb80c8434b685d0dc860b7604fed7",
-  "copyEngine": false
+  "copyEngine": true
 }
 config.dirname = '/'
 

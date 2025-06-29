@@ -26,9 +26,7 @@ export class EmployeeService {
   constructor(baseUrl: string = "") {
     if (typeof window === "undefined" && !baseUrl) {
       this.baseUrl =
-        process.env.NEXTAUTH_URL ||
-        process.env.VERCEL_URL ||
-        "http://localhost:3000";
+        process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
     } else {
       this.baseUrl = baseUrl;
     }

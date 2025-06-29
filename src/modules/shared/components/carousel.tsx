@@ -156,20 +156,6 @@ export const Carousel: FC<CarouselProps> = ({
 
       {/* Container principal del carousel */}
       <div className="overflow-hidden rounded-xl">
-        {/* Fallback para SSR: Grid responsivo */}
-        <noscript>
-          <div
-            className={cn(
-              "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-              gap
-            )}
-          >
-            {children.map((child, index) => (
-              <div key={index}>{child}</div>
-            ))}
-          </div>
-        </noscript>
-
         {/* Carousel interactivo */}
         <div
           className={cn(
