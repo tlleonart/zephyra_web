@@ -25,10 +25,16 @@ export class EmployeeService {
 
   constructor(baseUrl: string = "") {
     if (typeof window === "undefined" && !baseUrl) {
+      // Corregir la variable de entorno y agregar fallbacks para Vercel
       this.baseUrl =
-        process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
+        process.env.NEXTAUTH_URL ||
+        process.env.VERCEL_URL ||
+        `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` ||
+        "http://localhost:3000";
     } else {
-      this.baseUrl = baseUrl;
+      this.baseUrl =
+        baseUrl ||
+        (typeof window !== "undefined" ? window.location.origin : "");
     }
   }
 
@@ -57,16 +63,30 @@ export class EmployeeService {
         headers: {
           "Content-Type": "application/json",
         },
+        // Agregar configuración específica para server-side
+        ...(typeof window === "undefined" && {
+          cache: "no-store",
+        }),
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        // Mejorar el manejo de errores para debugging
+        const errorText = await response.text();
+        console.error(`API Error: ${response.status} - ${errorText}`);
+        throw new Error(
+          `HTTP error! status: ${response.status}, body: ${errorText}`
+        );
       }
 
       const data: PaginatedResponse<any> = await response.json();
       return data;
     } catch (error) {
-      console.error("Error fetching employees:", error);
+      console.error("Error fetching employees:", {
+        error,
+        url,
+        baseUrl: this.baseUrl,
+        params,
+      });
 
       throw new Error(
         error instanceof Error
@@ -109,13 +129,21 @@ export class EmployeeService {
         if (response.status === 404) {
           throw new Error(`Empleado con ID ${id} no encontrado`);
         }
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error(`API Error: ${response.status} - ${errorText}`);
+        throw new Error(
+          `HTTP error! status: ${response.status}, body: ${errorText}`
+        );
       }
 
       const data: ApiResponse<any> = await response.json();
       return data;
     } catch (error) {
-      console.error(`Error fetching employee ${id}:`, error);
+      console.error(`Error fetching employee ${id}:`, {
+        error,
+        url,
+        baseUrl: this.baseUrl,
+      });
       throw new Error(
         error instanceof Error
           ? error.message

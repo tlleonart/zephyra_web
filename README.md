@@ -106,8 +106,11 @@ zephyra_web
 │     │  │  │  │  ├─ team-content.tsx
 │     │  │  │  │  ├─ team-section.tsx
 │     │  │  │  │  └─ team-skeleton.tsx
-│     │  │  │  ├─ TeamSection.tsx
-│     │  │  │  └─ WelcomeSection.tsx
+│     │  │  │  └─ welcome-section
+│     │  │  │     ├─ welcome-background.tsx
+│     │  │  │     ├─ welcome-content.tsx
+│     │  │  │     ├─ welcome-hero-text.tsx
+│     │  │  │     └─ welcome-section.tsx
 │     │  │  ├─ ServicesCarousel.tsx
 │     │  │  ├─ ServicesCarouselCard.tsx
 │     │  │  └─ ServicesCarouselContactButton.tsx
@@ -149,7 +152,13 @@ zephyra_web
 │        │  ├─ ContactForm.tsx
 │        │  ├─ Footer.tsx
 │        │  ├─ header
-│        │  │  └─ Header.tsx
+│        │  │  ├─ header-component.tsx
+│        │  │  ├─ header-content.tsx
+│        │  │  ├─ header-logo.tsx
+│        │  │  ├─ header-navigation.tsx
+│        │  │  ├─ mobile-menu-button.tsx
+│        │  │  ├─ mobile-menu.tsx
+│        │  │  └─ navigation-link.tsx
 │        │  ├─ index.ts
 │        │  ├─ Logo.tsx
 │        │  ├─ modals
