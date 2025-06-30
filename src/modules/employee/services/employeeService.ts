@@ -25,7 +25,6 @@ export class EmployeeService {
 
   constructor(baseUrl: string = "") {
     if (typeof window === "undefined" && !baseUrl) {
-      // Corregir la variable de entorno y agregar fallbacks para Vercel
       this.baseUrl =
         process.env.NEXTAUTH_URL ||
         process.env.VERCEL_URL ||
