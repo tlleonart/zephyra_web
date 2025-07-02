@@ -6,6 +6,7 @@ export type BlogPost = {
   date: string;
   author: string;
   content: string[];
+  tags?: string[];
 };
 
 export const dummyBlogPosts: BlogPost[] = [

@@ -5,7 +5,7 @@ import { WelcomeContent } from "./welcome-content";
 
 export const WelcomeSection: FC = () => {
   return (
-    <Section className="py-20 md:py-32 px-4 md:px-6 lg:px-8 min-h-[80vh] flex items-center">
+    <Section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
       <WelcomeBackground />
       <WelcomeContent />
     </Section>

@@ -18,7 +18,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <path
           d="M20 40H70M70 40L50 20M70 40L50 60"
@@ -49,7 +49,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <path d="M40 15V65" stroke="currentColor" strokeWidth="2" />
         <path d="M25 20H55V60H25V20Z" stroke="currentColor" strokeWidth="2" />
@@ -72,7 +72,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <circle cx="40" cy="40" r="20" stroke="currentColor" strokeWidth="2" />
         <path
@@ -96,7 +96,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <path d="M25 15H55V65H25V15Z" stroke="currentColor" strokeWidth="2" />
         <path d="M30 25H50" stroke="currentColor" strokeWidth="2" />
@@ -118,7 +118,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <circle cx="30" cy="30" r="10" stroke="currentColor" strokeWidth="2" />
         <circle cx="50" cy="30" r="10" stroke="currentColor" strokeWidth="2" />
@@ -139,7 +139,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <circle cx="30" cy="25" r="10" stroke="currentColor" strokeWidth="2" />
         <circle cx="50" cy="25" r="10" stroke="currentColor" strokeWidth="2" />
@@ -160,7 +160,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <path
           d="M20 30H50C55.5228 30 60 34.4772 60 40C60 45.5228 55.5228 50 50 50H20V30Z"
@@ -191,7 +191,7 @@ const services = [
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-[#5CBFBF]"
+        className="text-[#5CBFBF] w-16 h-16 sm:w-20 sm:h-20"
       >
         <rect
           x="20"
@@ -215,7 +215,13 @@ const services = [
 ];
 
 export const ServicesCarousel: FC = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    breakpoints: {
+      "(max-width: 640px)": { align: "center" },
+    },
+  });
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
@@ -245,11 +251,12 @@ export const ServicesCarousel: FC = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="w-full bg-gray-100 py-16">
+    <div className="w-full bg-gray-100 py-8 sm:py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative">
+          {/* Carousel container */}
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
+            <div className="flex gap-4 sm:gap-6 lg:gap-8">
               {services.map(({ title, description, icon }, index) => (
                 <ServicesCarouselCard
                   key={index}
@@ -260,30 +267,54 @@ export const ServicesCarousel: FC = () => {
               ))}
             </div>
           </div>
+
+          {/* Navigation buttons - hide on very small screens */}
           <Button
-            className="absolute -left-10 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-md z-10"
+            className="absolute left-2 sm:-left-6 lg:-left-10 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 sm:p-3 shadow-md z-10 hover:bg-gray-50 transition-colors hidden sm:flex"
             onClick={scrollPrev}
+            aria-label="Servicio anterior"
           >
-            <ChevronLeft className="h-6 w-6 text-gray-700" />
+            <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 text-gray-700" />
           </Button>
           <Button
-            className="absolute -right-10 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white rounded-full p-3 shadow-md z-10"
+            className="absolute right-2 sm:-right-6 lg:-right-10 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 sm:p-3 shadow-md z-10 hover:bg-gray-50 transition-colors hidden sm:flex"
             onClick={scrollNext}
+            aria-label="Siguiente servicio"
           >
-            <ChevronRight className="h-6 w-6 text-gray-700" />
+            <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6 text-gray-700" />
           </Button>
         </div>
-        <div className="flex justify-center gap-2 mt-6">
+
+        {/* Dots navigation */}
+        <div className="flex justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
           {scrollSnaps.map((_, index) => (
             <button
               key={index}
-              className={`w-3 h-3 rounded-full ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
                 index === selectedIndex ? "bg-[#5CBFBF]" : "bg-gray-300"
               }`}
               onClick={() => emblaApi?.scrollTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={`Ir al slide ${index + 1}`}
             />
           ))}
+        </div>
+
+        {/* Mobile navigation buttons */}
+        <div className="flex justify-center gap-4 mt-4 sm:hidden">
+          <Button
+            className="bg-white rounded-full p-3 shadow-md hover:bg-gray-50 transition-colors"
+            onClick={scrollPrev}
+            aria-label="Servicio anterior"
+          >
+            <ChevronLeft className="h-5 w-5 text-gray-700" />
+          </Button>
+          <Button
+            className="bg-white rounded-full p-3 shadow-md hover:bg-gray-50 transition-colors"
+            onClick={scrollNext}
+            aria-label="Siguiente servicio"
+          >
+            <ChevronRight className="h-5 w-5 text-gray-700" />
+          </Button>
         </div>
       </div>
     </div>

@@ -37,18 +37,33 @@ const projects: ProjectsInterface[] = [
 
 export const ProjectsDropdown: FC = () => {
   return (
-    <Accordion type="single" collapsible>
-      {projects.map(({ title, description, slug }, index) => (
-        <AccordionItem value={slug} key={index}>
-          <AccordionTrigger>{title}</AccordionTrigger>
-          <AccordionContent>
-            <p className="mb-10">{description}</p>
-            {/* <Link href={slug} className="text-zmain cursor-pointer">
-              Leer más...
-            </Link> */}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <div className="w-full">
+      <Accordion
+        type="single"
+        collapsible
+        className="w-full space-y-2 sm:space-y-3"
+      >
+        {projects.map(({ title, description, slug }, index) => (
+          <AccordionItem
+            value={slug}
+            key={index}
+            className="border-white/20 bg-white/5 rounded-lg px-4 sm:px-6"
+          >
+            <AccordionTrigger className="text-left text-sm sm:text-base lg:text-lg font-medium hover:no-underline py-4 sm:py-6">
+              {title}
+            </AccordionTrigger>
+            <AccordionContent className="pb-4 sm:pb-6">
+              <p className="mb-6 sm:mb-8 lg:mb-10 text-sm sm:text-base leading-relaxed text-white/90">
+                {description}
+              </p>
+              {/* Comentado para futuras funcionalidades */}
+              {/* <Link href={slug} className="text-zmain cursor-pointer hover:underline">
+                Leer más...
+              </Link> */}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
   );
 };
