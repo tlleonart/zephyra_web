@@ -11,6 +11,7 @@ import {
 import { NewsletterForm } from "../shared/components/NewsletterForm";
 import { WelcomeSection } from "./components/sections/welcome-section/welcome-section";
 import { TeamSection } from "./components/sections/team-section/team-section";
+import { IntegrateSection } from "./components/sections/integrate-section";
 
 export const Home: FC = () => {
   return (
@@ -30,6 +31,7 @@ export const Home: FC = () => {
       </div>
       <div className="relative z-10">
         <WelcomeSection />
+        <IntegrateSection />
         <ServicesSection />
         <ProjectsSection />
         <TeamSection />
