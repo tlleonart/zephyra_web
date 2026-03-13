@@ -37,7 +37,7 @@ const BLOG_COVER_MAP: Record<string, string> = {
 
 // Project slug to image mapping
 const PROJECT_IMAGE_MAP: Record<string, string> = {
-  'programa-sustentabilidad-corporativa': '/images/project-sustentabilidad.jpg',
+  'programa-sostenibilidad-corporativa': '/images/project-sostenibilidad.jpg',
   'certificacion-b-corp-servicios': '/images/project-bcorp.jpg',
   'huella-carbono-evento-corporativo': '/images/project-huella.jpg',
 };

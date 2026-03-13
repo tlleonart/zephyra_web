@@ -59,15 +59,15 @@ const SERVICES = [
     iconName: "cloud",
   },
   {
-    title: "Informes de sustentabilidad",
+    title: "Informes de sostenibilidad",
     description:
-      "Elaboramos reportes de sustentabilidad bajo estándares internacionales (GRI, SASB, CDP). Comunicamos de manera transparente el desempeño ESG de tu organización.",
+      "Elaboramos reportes de sostenibilidad bajo estándares internacionales (GRI, SASB, CDP). Comunicamos de manera transparente el desempeño ESG de tu organización.",
     iconName: "description",
   },
   {
-    title: "Capacitaciones en sustentabilidad",
+    title: "Capacitaciones en sostenibilidad",
     description:
-      "Diseñamos y facilitamos programas de formación a medida sobre temáticas de sustentabilidad, cambio climático, economía circular y gestión ambiental para equipos de trabajo.",
+      "Diseñamos y facilitamos programas de formación a medida sobre temáticas de sostenibilidad, cambio climático, economía circular y gestión ambiental para equipos de trabajo.",
     iconName: "school",
   },
   {
@@ -77,9 +77,9 @@ const SERVICES = [
     iconName: "diversity_3",
   },
   {
-    title: "Comunicación sustentable",
+    title: "Comunicación sostenible",
     description:
-      "Asesoramos en estrategias de comunicación que reflejen auténticamente los valores y acciones de sustentabilidad, evitando el greenwashing y construyendo confianza.",
+      "Asesoramos en estrategias de comunicación que reflejen auténticamente los valores y acciones de sostenibilidad, evitando el greenwashing y construyendo confianza.",
     iconName: "campaign",
   },
   {
@@ -92,14 +92,14 @@ const SERVICES = [
 
 const PROJECTS = [
   {
-    title: "Programa de Sustentabilidad Corporativa - Empresa Industrial",
-    slug: "programa-sustentabilidad-corporativa",
+    title: "Programa de Sostenibilidad Corporativa - Empresa Industrial",
+    slug: "programa-sostenibilidad-corporativa",
     excerpt:
-      "Implementación integral de estrategia de sustentabilidad para empresa industrial líder en el sector manufacturero.",
+      "Implementación integral de estrategia de sostenibilidad para empresa industrial líder en el sector manufacturero.",
     description: `
-      <p>Desarrollamos e implementamos un programa completo de sustentabilidad corporativa para una empresa industrial líder, abarcando todas las dimensiones ESG (Ambiental, Social y Gobernanza).</p>
+      <p>Desarrollamos e implementamos un programa completo de sostenibilidad corporativa para una empresa industrial líder, abarcando todas las dimensiones ESG (Ambiental, Social y Gobernanza).</p>
       <p>El proyecto incluyó un diagnóstico inicial exhaustivo, definición de KPIs, establecimiento de metas a corto, mediano y largo plazo, y la creación de un sistema de monitoreo y reporte continuo.</p>
-      <p>Los resultados obtenidos posicionaron a la empresa como referente en sustentabilidad dentro de su industria.</p>
+      <p>Los resultados obtenidos posicionaron a la empresa como referente en sostenibilidad dentro de su industria.</p>
     `,
     isFeatured: true,
     achievements: [

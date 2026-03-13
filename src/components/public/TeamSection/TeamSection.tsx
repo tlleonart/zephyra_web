@@ -47,6 +47,7 @@ export const TeamSection = () => {
                         fill
                         className={styles.image}
                         sizes="120px"
+                        style={{ objectPosition: `${member.imagePositionX ?? 50}% ${member.imagePositionY ?? 50}%` }}
                       />
                     ) : (
                       <div className={styles.imagePlaceholder}>

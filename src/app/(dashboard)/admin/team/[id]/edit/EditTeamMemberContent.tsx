@@ -37,7 +37,10 @@ export function EditTeamMemberContent({ id }: EditTeamMemberContentProps) {
         role: member.role,
         specialty: member.specialty,
         imageStorageId: member.imageStorageId,
+        imagePositionX: member.imagePositionX,
+        imagePositionY: member.imagePositionY,
         isVisible: member.isVisible,
+        imageUrl: member.imageUrl,
       }}
     />
   );

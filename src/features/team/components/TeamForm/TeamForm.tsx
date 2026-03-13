@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { useMutation } from 'convex/react';
+import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../../../../convex/_generated/api';
 import { Id } from '../../../../../convex/_generated/dataModel';
 import { Input } from '@/components/ui/Input';
@@ -20,7 +20,10 @@ interface TeamFormProps {
     role: string;
     specialty: string;
     imageStorageId?: Id<'_storage'>;
+    imagePositionX?: number;
+    imagePositionY?: number;
     isVisible: boolean;
+    imageUrl?: string | null;
   };
 }
 
@@ -37,6 +40,8 @@ export const TeamForm = ({ mode, initialData }: TeamFormProps) => {
   const [imageStorageId, setImageStorageId] = useState<Id<'_storage'> | null>(
     initialData?.imageStorageId || null
   );
+  const [imagePositionX, setImagePositionX] = useState(initialData?.imagePositionX ?? 50);
+  const [imagePositionY, setImagePositionY] = useState(initialData?.imagePositionY ?? 50);
   const [isVisible, setIsVisible] = useState(initialData?.isVisible ?? true);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -62,6 +67,8 @@ export const TeamForm = ({ mode, initialData }: TeamFormProps) => {
           role,
           specialty,
           imageStorageId: imageStorageId || undefined,
+          imagePositionX,
+          imagePositionY,
           isVisible,
         });
         success('Miembro creado correctamente');
@@ -72,6 +79,8 @@ export const TeamForm = ({ mode, initialData }: TeamFormProps) => {
           role,
           specialty,
           imageStorageId: imageStorageId || undefined,
+          imagePositionX,
+          imagePositionY,
           isVisible,
         });
         success('Miembro actualizado correctamente');
@@ -83,6 +92,12 @@ export const TeamForm = ({ mode, initialData }: TeamFormProps) => {
       setLoading(false);
     }
   };
+
+  const imageUrl = useQuery(
+    api.files.getUrl,
+    imageStorageId ? { storageId: imageStorageId } : 'skip'
+  );
+  const previewUrl = imageUrl ?? initialData?.imageUrl ?? null;
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
@@ -97,8 +112,63 @@ export const TeamForm = ({ mode, initialData }: TeamFormProps) => {
               <ImageUpload
                 label="Foto"
                 value={imageStorageId}
-                onChange={(id) => setImageStorageId(id)}
+                onChange={(id) => {
+                  setImageStorageId(id);
+                  if (id !== imageStorageId) {
+                    setImagePositionX(50);
+                    setImagePositionY(50);
+                  }
+                }}
               />
+              {imageStorageId && previewUrl && (
+                <div className={styles.positionEditor}>
+                  <span className={styles.positionEditorLabel}>Posición de la foto</span>
+                  <div className={styles.positionPreview}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={previewUrl}
+                      alt="Vista previa"
+                      className={styles.positionPreviewImage}
+                      style={{ objectPosition: `${imagePositionX}% ${imagePositionY}%` }}
+                    />
+                  </div>
+                  <div className={styles.sliderGroup}>
+                    <label className={styles.sliderLabel}>
+                      <span>Horizontal</span>
+                      <span>{imagePositionX}%</span>
+                    </label>
+                    <input
+                      type="range"
+                      min={0}
+                      max={100}
+                      value={imagePositionX}
+                      onChange={(e) => setImagePositionX(Number(e.target.value))}
+                      className={styles.slider}
+                    />
+                  </div>
+                  <div className={styles.sliderGroup}>
+                    <label className={styles.sliderLabel}>
+                      <span>Vertical</span>
+                      <span>{imagePositionY}%</span>
+                    </label>
+                    <input
+                      type="range"
+                      min={0}
+                      max={100}
+                      value={imagePositionY}
+                      onChange={(e) => setImagePositionY(Number(e.target.value))}
+                      className={styles.slider}
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className={styles.resetButton}
+                    onClick={() => { setImagePositionX(50); setImagePositionY(50); }}
+                  >
+                    Restablecer al centro
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className={styles.fieldsSection}>

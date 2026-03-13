@@ -72,6 +72,8 @@ export default defineSchema({
     role: v.string(), // e.g., "Cofundadora", "Consultora"
     specialty: v.string(),
     imageStorageId: v.optional(v.id("_storage")),
+    imagePositionX: v.optional(v.number()),
+    imagePositionY: v.optional(v.number()),
     displayOrder: v.number(),
     isVisible: v.boolean(),
     // Soft delete

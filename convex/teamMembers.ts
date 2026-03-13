@@ -113,6 +113,8 @@ export const create = mutation({
     role: v.string(),
     specialty: v.string(),
     imageStorageId: v.optional(v.id("_storage")),
+    imagePositionX: v.optional(v.number()),
+    imagePositionY: v.optional(v.number()),
     isVisible: v.boolean(),
   },
   handler: async (ctx, args) => {
@@ -130,6 +132,8 @@ export const create = mutation({
       role: args.role.trim(),
       specialty: args.specialty.trim(),
       imageStorageId: args.imageStorageId,
+      imagePositionX: args.imagePositionX,
+      imagePositionY: args.imagePositionY,
       displayOrder,
       isVisible: args.isVisible,
     });
@@ -145,6 +149,8 @@ export const update = mutation({
     role: v.optional(v.string()),
     specialty: v.optional(v.string()),
     imageStorageId: v.optional(v.id("_storage")),
+    imagePositionX: v.optional(v.number()),
+    imagePositionY: v.optional(v.number()),
     isVisible: v.optional(v.boolean()),
   },
   handler: async (ctx, args) => {
@@ -159,6 +165,8 @@ export const update = mutation({
     if (args.role !== undefined) updates.role = args.role.trim();
     if (args.specialty !== undefined) updates.specialty = args.specialty.trim();
     if (args.imageStorageId !== undefined) updates.imageStorageId = args.imageStorageId;
+    if (args.imagePositionX !== undefined) updates.imagePositionX = args.imagePositionX;
+    if (args.imagePositionY !== undefined) updates.imagePositionY = args.imagePositionY;
     if (args.isVisible !== undefined) updates.isVisible = args.isVisible;
 
     await ctx.db.patch(args.id, updates);
