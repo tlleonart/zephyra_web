@@ -4,7 +4,6 @@ import { useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
 import { BlogCard } from '@/components/public/BlogCard';
 import { Skeleton } from '@/components/ui/Skeleton';
-import { ClientOnly } from '@/components/ClientOnly';
 import styles from '@/app/(public)/blog/BlogPage.module.css';
 
 export function BlogPageContent() {
@@ -21,9 +20,7 @@ export function BlogPageContent() {
 
       <section className={styles.content}>
         <div className={styles.container}>
-          <ClientOnly fallback={<BlogGridSkeleton />}>
-            <BlogGrid />
-          </ClientOnly>
+          <BlogGrid />
         </div>
       </section>
     </>

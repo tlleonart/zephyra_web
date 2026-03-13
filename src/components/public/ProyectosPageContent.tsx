@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { api } from '../../../convex/_generated/api';
 import { Skeleton } from '@/components/ui/Skeleton';
-import { ClientOnly } from '@/components/ClientOnly';
 import { getProjectImage } from '@/lib/staticImages';
 import styles from '@/app/(public)/proyectos/ProyectosPage.module.css';
 
@@ -23,9 +22,7 @@ export function ProyectosPageContent() {
 
       <section className={styles.content}>
         <div className={styles.container}>
-          <ClientOnly fallback={<ProjectsGridSkeleton />}>
-            <ProjectsGrid />
-          </ClientOnly>
+          <ProjectsGrid />
         </div>
       </section>
     </>

@@ -1,41 +1,25 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/features/auth/lib/session';
+import { EditAllianceContent } from './EditAllianceContent';
 
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery } from 'convex/react';
-import { api } from '../../../../../../../convex/_generated/api';
-import { Id } from '../../../../../../../convex/_generated/dataModel';
-import { AllianceForm } from '@/features/alliances/components/AllianceForm';
-import { Skeleton } from '@/components/ui/Skeleton';
+export const dynamic = 'force-dynamic';
 
-export default function EditAlliancePage() {
-  const params = useParams();
-  const router = useRouter();
-  const id = params.id as Id<'alliances'>;
+export const metadata = {
+  title: 'Editar alianza - Zephyra Consultora',
+};
 
-  const alliance = useQuery(api.alliances.getById, { id });
+export default async function EditAlliancePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const session = await getSession();
 
-  if (alliance === undefined) {
-    return (
-      <div style={{ maxWidth: '700px' }}>
-        <Skeleton height={350} variant="rectangular" />
-      </div>
-    );
+  if (!session) {
+    redirect('/login');
   }
 
-  if (alliance === null) {
-    router.push('/admin/alliances');
-    return null;
-  }
+  const { id } = await params;
 
-  return (
-    <AllianceForm
-      mode="edit"
-      initialData={{
-        _id: alliance._id,
-        name: alliance.name,
-        logoStorageId: alliance.logoStorageId,
-        websiteUrl: alliance.websiteUrl,
-      }}
-    />
-  );
+  return <EditAllianceContent id={id} />;
 }

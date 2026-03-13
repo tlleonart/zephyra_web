@@ -1,68 +1,29 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/features/auth/lib/session';
+import { EditUserContent } from './EditUserContent';
 
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery } from 'convex/react';
-import { api } from '../../../../../../../convex/_generated/api';
-import { Id } from '../../../../../../../convex/_generated/dataModel';
-import { UserForm } from '@/features/users/components/UserForm';
-import { Skeleton } from '@/components/ui/Skeleton';
-import { useEffect, useState } from 'react';
+export const dynamic = 'force-dynamic';
 
-export default function EditUserPage() {
-  const params = useParams();
-  const router = useRouter();
-  const id = params.id as Id<'adminUsers'>;
+export const metadata = {
+  title: 'Editar usuario - Zephyra Consultora',
+};
 
-  // Get current user from session - we need to pass this to the form
-  const [currentUserId, setCurrentUserId] = useState<Id<'adminUsers'> | null>(null);
+export default async function EditUserPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const session = await getSession();
 
-  useEffect(() => {
-    // Get session from cookie (client-side check)
-    const checkSession = async () => {
-      const response = await fetch('/api/auth/session');
-      if (response.ok) {
-        const data = await response.json();
-        if (data.userId) {
-          setCurrentUserId(data.userId);
-        } else {
-          router.push('/login');
-        }
-      } else {
-        router.push('/login');
-      }
-    };
-    checkSession();
-  }, [router]);
-
-  const user = useQuery(
-    api.adminUsers.getById,
-    currentUserId ? { userId: currentUserId, targetId: id } : 'skip'
-  );
-
-  if (!currentUserId || user === undefined) {
-    return (
-      <div style={{ maxWidth: '600px' }}>
-        <Skeleton height={400} variant="rectangular" />
-      </div>
-    );
+  if (!session) {
+    redirect('/login');
   }
 
-  if (user === null) {
-    router.push('/admin/users');
-    return null;
+  if (session.role !== 'superadmin') {
+    redirect('/admin');
   }
 
-  return (
-    <UserForm
-      mode="edit"
-      currentUserId={currentUserId}
-      initialData={{
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        isActive: user.isActive,
-      }}
-    />
-  );
+  const { id } = await params;
+
+  return <EditUserContent id={id} currentUserId={session.userId} />;
 }

@@ -1,43 +1,25 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/features/auth/lib/session';
+import { EditTeamMemberContent } from './EditTeamMemberContent';
 
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery } from 'convex/react';
-import { api } from '../../../../../../../convex/_generated/api';
-import { Id } from '../../../../../../../convex/_generated/dataModel';
-import { TeamForm } from '@/features/team/components/TeamForm';
-import { Skeleton } from '@/components/ui/Skeleton';
+export const dynamic = 'force-dynamic';
 
-export default function EditTeamMemberPage() {
-  const params = useParams();
-  const router = useRouter();
-  const id = params.id as Id<'teamMembers'>;
+export const metadata = {
+  title: 'Editar miembro - Zephyra Consultora',
+};
 
-  const member = useQuery(api.teamMembers.getById, { id });
+export default async function EditTeamMemberPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const session = await getSession();
 
-  if (member === undefined) {
-    return (
-      <div style={{ maxWidth: 800 }}>
-        <Skeleton height={400} variant="rectangular" />
-      </div>
-    );
+  if (!session) {
+    redirect('/login');
   }
 
-  if (member === null) {
-    router.push('/admin/team');
-    return null;
-  }
+  const { id } = await params;
 
-  return (
-    <TeamForm
-      mode="edit"
-      initialData={{
-        _id: member._id,
-        name: member.name,
-        role: member.role,
-        specialty: member.specialty,
-        imageStorageId: member.imageStorageId,
-        isVisible: member.isVisible,
-      }}
-    />
-  );
+  return <EditTeamMemberContent id={id} />;
 }

@@ -1,42 +1,25 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/features/auth/lib/session';
+import { EditServiceContent } from './EditServiceContent';
 
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery } from 'convex/react';
-import { api } from '../../../../../../../convex/_generated/api';
-import { Id } from '../../../../../../../convex/_generated/dataModel';
-import { ServiceForm } from '@/features/services/components/ServiceForm';
-import { Skeleton } from '@/components/ui/Skeleton';
+export const dynamic = 'force-dynamic';
 
-export default function EditServicePage() {
-  const params = useParams();
-  const router = useRouter();
-  const id = params.id as Id<'services'>;
+export const metadata = {
+  title: 'Editar servicio - Zephyra Consultora',
+};
 
-  const service = useQuery(api.services.getById, { id });
+export default async function EditServicePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const session = await getSession();
 
-  if (service === undefined) {
-    return (
-      <div style={{ maxWidth: '800px' }}>
-        <Skeleton height={400} variant="rectangular" />
-      </div>
-    );
+  if (!session) {
+    redirect('/login');
   }
 
-  if (service === null) {
-    router.push('/admin/services');
-    return null;
-  }
+  const { id } = await params;
 
-  return (
-    <ServiceForm
-      mode="edit"
-      initialData={{
-        _id: service._id,
-        title: service.title,
-        description: service.description,
-        iconName: service.iconName,
-        isActive: service.isActive,
-      }}
-    />
-  );
+  return <EditServiceContent id={id} />;
 }

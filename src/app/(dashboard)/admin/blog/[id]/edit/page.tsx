@@ -1,49 +1,25 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/features/auth/lib/session';
+import { EditBlogPostContent } from './EditBlogPostContent';
 
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery } from 'convex/react';
-import { api } from '../../../../../../../convex/_generated/api';
-import { Id } from '../../../../../../../convex/_generated/dataModel';
-import { BlogForm } from '@/features/blog/components/BlogForm';
-import { Skeleton } from '@/components/ui/Skeleton';
+export const dynamic = 'force-dynamic';
 
-export default function EditBlogPostPage() {
-  const params = useParams();
-  const router = useRouter();
-  const id = params.id as Id<'blogPosts'>;
+export const metadata = {
+  title: 'Editar artículo - Zephyra Consultora',
+};
 
-  const post = useQuery(api.blogPosts.getById, { id });
+export default async function EditBlogPostPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const session = await getSession();
 
-  if (post === undefined) {
-    return (
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '24px' }}>
-        <Skeleton height={600} variant="rectangular" />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <Skeleton height={200} variant="rectangular" />
-          <Skeleton height={200} variant="rectangular" />
-        </div>
-      </div>
-    );
+  if (!session) {
+    redirect('/login');
   }
 
-  if (post === null) {
-    router.push('/admin/blog');
-    return null;
-  }
+  const { id } = await params;
 
-  return (
-    <BlogForm
-      mode="edit"
-      initialData={{
-        _id: post._id,
-        title: post.title,
-        slug: post.slug,
-        excerpt: post.excerpt,
-        content: post.content,
-        coverStorageId: post.coverStorageId,
-        authorId: post.authorId,
-        status: post.status,
-      }}
-    />
-  );
+  return <EditBlogPostContent id={id} />;
 }
