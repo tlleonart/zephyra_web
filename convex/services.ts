@@ -14,7 +14,20 @@ export const list = query({
       .filter((q) => q.eq(q.field("deletedAt"), undefined))
       .collect();
 
-    return services;
+    const servicesWithBlock = await Promise.all(
+      services.map(async (service) => {
+        let blockTitle: string | null = null;
+        if (service.blockId) {
+          const block = await ctx.db.get(service.blockId);
+          if (block && !block.deletedAt) {
+            blockTitle = block.title;
+          }
+        }
+        return { ...service, blockTitle };
+      })
+    );
+
+    return servicesWithBlock;
   },
 });
 
@@ -36,7 +49,7 @@ export const getById = query({
   handler: async (ctx, args) => {
     const service = await ctx.db.get(args.id);
     if (!service || service.deletedAt) return null;
-    return service;
+    return { ...service, blockId: service.blockId ?? undefined };
   },
 });
 
@@ -50,6 +63,7 @@ export const create = mutation({
     description: v.string(),
     iconName: v.string(),
     isActive: v.boolean(),
+    blockId: v.optional(v.id("serviceBlocks")),
   },
   handler: async (ctx, args) => {
     // Get next display order
@@ -67,6 +81,7 @@ export const create = mutation({
       iconName: args.iconName,
       displayOrder,
       isActive: args.isActive,
+      blockId: args.blockId,
     });
 
     return id;
@@ -80,6 +95,7 @@ export const update = mutation({
     description: v.optional(v.string()),
     iconName: v.optional(v.string()),
     isActive: v.optional(v.boolean()),
+    blockId: v.optional(v.id("serviceBlocks")),
   },
   handler: async (ctx, args) => {
     const service = await ctx.db.get(args.id);
@@ -87,12 +103,13 @@ export const update = mutation({
       throw new Error("Servicio no encontrado");
     }
 
-    const updates: Partial<typeof service> = {};
+    const updates: Record<string, unknown> = {};
 
     if (args.title !== undefined) updates.title = args.title.trim();
     if (args.description !== undefined) updates.description = args.description.trim();
     if (args.iconName !== undefined) updates.iconName = args.iconName;
     if (args.isActive !== undefined) updates.isActive = args.isActive;
+    if (args.blockId !== undefined) updates.blockId = args.blockId;
 
     await ctx.db.patch(args.id, updates);
   },

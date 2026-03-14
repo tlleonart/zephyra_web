@@ -144,6 +144,33 @@ const PROJECTS = [
   },
 ];
 
+const SERVICE_BLOCKS = [
+  {
+    title: "Estrategia y gestión de sostenibilidad",
+    subtitle:
+      "Integramos la sostenibilidad en la gestión diaria de las organizaciones.",
+    serviceIndexes: [0, 1, 7], // Diseño, Certificación B Corp, Sistemas ISO
+  },
+  {
+    title: "Medición y reportes de impacto",
+    subtitle:
+      "Medimos y analizamos el impacto para fortalecer la toma de decisiones y la mejora continua.",
+    serviceIndexes: [2, 3], // Medición huella, Informes
+  },
+  {
+    title: "Personas, cultura y diversidad",
+    subtitle:
+      "Impulsamos organizaciones más inclusivas, equitativas y comprometidas.",
+    serviceIndexes: [4, 5], // Capacitaciones, Planes igualdad
+  },
+  {
+    title: "Comunicación con impacto",
+    subtitle:
+      "Potenciamos el valor de lo que las organizaciones hacen bien.",
+    serviceIndexes: [6], // Comunicación sostenible
+  },
+];
+
 const CLIENTS = [
   { name: "Limansky", websiteUrl: null },
   { name: "Cibic", websiteUrl: null },
@@ -304,6 +331,7 @@ export const seedAll = mutation({
     const results = {
       teamMembers: 0,
       services: 0,
+      serviceBlocks: 0,
       projects: 0,
       achievements: 0,
       clients: 0,
@@ -327,16 +355,39 @@ export const seedAll = mutation({
     }
 
     // 2. Seed Services
+    const serviceIds: Id<"services">[] = [];
     for (let i = 0; i < SERVICES.length; i++) {
       const service = SERVICES[i];
-      await ctx.db.insert("services", {
+      const serviceId = await ctx.db.insert("services", {
         title: service.title,
         description: service.description,
         iconName: service.iconName,
         displayOrder: i,
         isActive: true,
       });
+      serviceIds.push(serviceId);
       results.services++;
+    }
+
+    // 2b. Seed Service Blocks and assign services
+    for (let i = 0; i < SERVICE_BLOCKS.length; i++) {
+      const block = SERVICE_BLOCKS[i];
+      const blockId = await ctx.db.insert("serviceBlocks", {
+        title: block.title,
+        subtitle: block.subtitle,
+        displayOrder: i,
+        isActive: true,
+      });
+      results.serviceBlocks++;
+
+      // Assign services to this block
+      for (let j = 0; j < block.serviceIndexes.length; j++) {
+        const serviceIndex = block.serviceIndexes[j];
+        await ctx.db.patch(serviceIds[serviceIndex], {
+          blockId,
+          blockDisplayOrder: j,
+        });
+      }
     }
 
     // 3. Seed Projects with Achievements
@@ -443,6 +494,11 @@ export const clearAll = mutation({
     const services = await ctx.db.query("services").collect();
     for (const service of services) {
       await ctx.db.delete(service._id);
+    }
+
+    const serviceBlocks = await ctx.db.query("serviceBlocks").collect();
+    for (const block of serviceBlocks) {
+      await ctx.db.delete(block._id);
     }
 
     const clients = await ctx.db.query("clients").collect();

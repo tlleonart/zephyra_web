@@ -8,32 +8,10 @@
   gap: var(--spacing-xl);
 }
 
-.iconSection {
+.imageSection {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
-}
-
-.iconPreview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-lg);
-  background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-}
-
-.iconPreview .material-icons {
-  font-size: 48px;
-  color: var(--color-primary);
-}
-
-.iconName {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  font-family: monospace;
 }
 
 .fieldsSection {
@@ -109,24 +87,6 @@
   font-size: 0.75rem;
   color: var(--color-text-muted);
   margin: var(--spacing-xs) 0 0;
-}
-
-.select {
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  font-family: inherit;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  transition: border-color var(--transition-fast);
-}
-
-.select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 @media (max-width: 768px) {

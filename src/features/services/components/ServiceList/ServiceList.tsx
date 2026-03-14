@@ -18,6 +18,8 @@ interface Service {
   iconName: string;
   isActive: boolean;
   displayOrder: number;
+  blockId?: Id<'serviceBlocks'>;
+  blockTitle: string | null;
 }
 
 interface ServiceListProps {
@@ -86,6 +88,15 @@ export const ServiceList = ({ adminUserId }: ServiceListProps) => {
             {service.description.length > 60 ? '...' : ''}
           </span>
         </div>
+      ),
+    },
+    {
+      key: 'block',
+      header: 'Bloque',
+      render: (service) => (
+        <span className={service.blockTitle ? styles.blockName : styles.noBlock}>
+          {service.blockTitle || 'Sin bloque'}
+        </span>
       ),
     },
     {

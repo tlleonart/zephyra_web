@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { useMutation } from 'convex/react';
+import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../../../../convex/_generated/api';
 import { Id } from '../../../../../convex/_generated/dataModel';
 import { Input } from '@/components/ui/Input';
@@ -20,6 +20,7 @@ interface ServiceFormProps {
     description: string;
     iconName: string;
     isActive: boolean;
+    blockId?: Id<'serviceBlocks'>;
   };
 }
 
@@ -29,11 +30,13 @@ export const ServiceForm = ({ mode, initialData }: ServiceFormProps) => {
 
   const createService = useMutation(api.services.create);
   const updateService = useMutation(api.services.update);
+  const blocks = useQuery(api.serviceBlocks.listForSelect);
 
   const [title, setTitle] = useState(initialData?.title || '');
   const [description, setDescription] = useState(initialData?.description || '');
   const [iconName, setIconName] = useState(initialData?.iconName || 'lightbulb');
   const [isActive, setIsActive] = useState(initialData?.isActive ?? true);
+  const [blockId, setBlockId] = useState<string>(initialData?.blockId || '');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -52,12 +55,15 @@ export const ServiceForm = ({ mode, initialData }: ServiceFormProps) => {
 
     setLoading(true);
     try {
+      const blockIdValue = blockId ? (blockId as Id<'serviceBlocks'>) : undefined;
+
       if (mode === 'create') {
         await createService({
           title,
           description,
           iconName,
           isActive,
+          blockId: blockIdValue,
         });
         success('Servicio creado correctamente');
       } else if (initialData) {
@@ -67,6 +73,7 @@ export const ServiceForm = ({ mode, initialData }: ServiceFormProps) => {
           description,
           iconName,
           isActive,
+          blockId: blockIdValue,
         });
         success('Servicio actualizado correctamente');
       }
@@ -125,6 +132,25 @@ export const ServiceForm = ({ mode, initialData }: ServiceFormProps) => {
                 {errors.description && (
                   <span className={styles.error}>{errors.description}</span>
                 )}
+              </div>
+
+              <div className={styles.field}>
+                <label className={styles.label}>Bloque</label>
+                <select
+                  className={styles.select}
+                  value={blockId}
+                  onChange={(e) => setBlockId(e.target.value)}
+                >
+                  <option value="">Sin bloque</option>
+                  {blocks?.map((block) => (
+                    <option key={block._id} value={block._id}>
+                      {block.title}
+                    </option>
+                  ))}
+                </select>
+                <p className={styles.hint}>
+                  Asigna este servicio a un bloque para mostrarlo en el sitio público.
+                </p>
               </div>
 
               <label className={styles.checkbox}>

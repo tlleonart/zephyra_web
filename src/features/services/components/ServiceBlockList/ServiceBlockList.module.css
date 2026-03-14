@@ -16,7 +16,7 @@
   margin: 0;
 }
 
-.subtitle {
+.headerSubtitle {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   margin: var(--spacing-xs) 0 0;
@@ -50,32 +50,22 @@
   color: white;
 }
 
-.iconPreview {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-md);
-  color: var(--color-primary);
-}
-
-.iconPreview .material-icons {
-  font-size: 24px;
-}
-
 .title {
   display: block;
   font-weight: 500;
   color: var(--color-text);
 }
 
-.description {
+.subtitle {
   display: block;
   font-size: 0.75rem;
   color: var(--color-text-secondary);
   margin-top: 2px;
+}
+
+.count {
+  font-weight: 500;
+  color: var(--color-text-secondary);
 }
 
 .badge {
@@ -101,17 +91,6 @@
 .inactive {
   background-color: var(--color-bg-tertiary);
   color: var(--color-text-muted);
-}
-
-.blockName {
-  font-size: 0.8125rem;
-  color: var(--color-text);
-}
-
-.noBlock {
-  font-size: 0.8125rem;
-  color: var(--color-text-muted);
-  font-style: italic;
 }
 
 .actions {

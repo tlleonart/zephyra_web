@@ -118,6 +118,22 @@ export default defineSchema({
     .index("by_project_order", ["projectId", "displayOrder"]),
 
   // ============================================
+  // SERVICE BLOCKS
+  // ============================================
+  serviceBlocks: defineTable({
+    title: v.string(),
+    subtitle: v.string(),
+    imageStorageId: v.optional(v.id("_storage")),
+    displayOrder: v.number(),
+    isActive: v.boolean(),
+    deletedAt: v.optional(v.number()),
+    deletedBy: v.optional(v.id("adminUsers")),
+  })
+    .index("by_order", ["displayOrder"])
+    .index("by_active_order", ["isActive", "displayOrder"])
+    .index("by_deleted", ["deletedAt"]),
+
+  // ============================================
   // SERVICES
   // ============================================
   services: defineTable({
@@ -126,13 +142,17 @@ export default defineSchema({
     iconName: v.string(), // Material Icon name
     displayOrder: v.number(),
     isActive: v.boolean(),
+    blockId: v.optional(v.id("serviceBlocks")),
+    blockDisplayOrder: v.optional(v.number()),
     // Soft delete
     deletedAt: v.optional(v.number()),
     deletedBy: v.optional(v.id("adminUsers")),
   })
     .index("by_order", ["displayOrder"])
     .index("by_active_order", ["isActive", "displayOrder"])
-    .index("by_deleted", ["deletedAt"]),
+    .index("by_deleted", ["deletedAt"])
+    .index("by_block", ["blockId"])
+    .index("by_block_order", ["blockId", "blockDisplayOrder"]),
 
   // ============================================
   // CLIENTS

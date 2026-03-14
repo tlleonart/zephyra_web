@@ -37,6 +37,7 @@ export function EditServiceContent({ id }: EditServiceContentProps) {
         description: service.description,
         iconName: service.iconName,
         isActive: service.isActive,
+        blockId: service.blockId,
       }}
     />
   );

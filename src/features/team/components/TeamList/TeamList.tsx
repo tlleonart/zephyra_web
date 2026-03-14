@@ -28,10 +28,33 @@ interface TeamListProps {
 export const TeamList = ({ adminUserId }: TeamListProps) => {
   const members = useQuery(api.teamMembers.list);
   const removeMember = useMutation(api.teamMembers.remove);
+  const reorderMembers = useMutation(api.teamMembers.reorder);
   const { success, error } = useToast();
 
   const [deleteTarget, setDeleteTarget] = useState<TeamMember | null>(null);
   const [deleting, setDeleting] = useState(false);
+
+  const handleMoveUp = async (index: number) => {
+    if (!members || index <= 0) return;
+    const reordered = [...members];
+    [reordered[index - 1], reordered[index]] = [reordered[index], reordered[index - 1]];
+    try {
+      await reorderMembers({ orderedIds: reordered.map((m) => m._id) });
+    } catch (err) {
+      error(err instanceof Error ? err.message : 'Error al reordenar');
+    }
+  };
+
+  const handleMoveDown = async (index: number) => {
+    if (!members || index >= members.length - 1) return;
+    const reordered = [...members];
+    [reordered[index], reordered[index + 1]] = [reordered[index + 1], reordered[index]];
+    try {
+      await reorderMembers({ orderedIds: reordered.map((m) => m._id) });
+    } catch (err) {
+      error(err instanceof Error ? err.message : 'Error al reordenar');
+    }
+  };
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
@@ -86,6 +109,34 @@ export const TeamList = ({ adminUserId }: TeamListProps) => {
           {member.isVisible ? 'Visible' : 'Oculto'}
         </span>
       ),
+    },
+    {
+      key: 'order',
+      header: 'Orden',
+      width: '80px',
+      render: (member) => {
+        const index = members?.findIndex((m) => m._id === member._id) ?? -1;
+        return (
+          <div className={styles.orderButtons}>
+            <button
+              className={styles.reorderButton}
+              onClick={() => handleMoveUp(index)}
+              disabled={index <= 0}
+              title="Mover arriba"
+            >
+              ▲
+            </button>
+            <button
+              className={styles.reorderButton}
+              onClick={() => handleMoveDown(index)}
+              disabled={!members || index >= members.length - 1}
+              title="Mover abajo"
+            >
+              ▼
+            </button>
+          </div>
+        );
+      },
     },
     {
       key: 'actions',

@@ -21,6 +21,7 @@ import type * as newsletter from "../newsletter.js";
 import type * as projectAchievements from "../projectAchievements.js";
 import type * as projects from "../projects.js";
 import type * as seedContent from "../seedContent.js";
+import type * as serviceBlocks from "../serviceBlocks.js";
 import type * as services from "../services.js";
 import type * as stats from "../stats.js";
 import type * as teamMembers from "../teamMembers.js";
@@ -47,6 +48,7 @@ declare const fullApi: ApiFromModules<{
   projectAchievements: typeof projectAchievements;
   projects: typeof projects;
   seedContent: typeof seedContent;
+  serviceBlocks: typeof serviceBlocks;
   services: typeof services;
   stats: typeof stats;
   teamMembers: typeof teamMembers;
