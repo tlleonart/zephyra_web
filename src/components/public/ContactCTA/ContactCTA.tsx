@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import styles from './ContactCTA.module.css';
+import Link from "next/link";
+import styles from "./ContactCTA.module.css";
 
 interface ContactCTAProps {
   title?: string;
@@ -11,10 +11,10 @@ interface ContactCTAProps {
 }
 
 export const ContactCTA = ({
-  title = 'Comienza tu transformacion sostenible',
-  description = 'Estamos listos para acompanarte en el camino hacia un modelo de negocio mas responsable y sostenible.',
-  ctaText = 'Contactanos',
-  ctaHref = '/contacto',
+  title = "Comenzá tu transformación sostenible",
+  description = "Estamos listos para acompañarte en el camino hacia un modelo de negocio más responsable y sostenible.",
+  ctaText = "Contactanos",
+  ctaHref = "/contacto",
 }: ContactCTAProps) => {
   return (
     <section className={styles.section}>

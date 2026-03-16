@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import styles from './Footer.module.css';
+import Link from "next/link";
+import styles from "./Footer.module.css";
 
 const quickLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/#servicios', label: 'Servicios' },
-  { href: '/proyectos', label: 'Proyectos' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contacto', label: 'Contacto' },
+  { href: "/", label: "Inicio" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const socialLinks = [
   {
-    href: 'https://instagram.com/zephyraconsultora',
-    label: 'Instagram',
+    href: "https://instagram.com/zephyraconsultora",
+    label: "Instagram",
     icon: (
       <svg
         width="24"
@@ -31,8 +31,8 @@ const socialLinks = [
     ),
   },
   {
-    href: 'https://linkedin.com/company/zephyraconsultora',
-    label: 'LinkedIn',
+    href: "https://linkedin.com/company/zephyraconsultora",
+    label: "LinkedIn",
     icon: (
       <svg
         width="24"
@@ -65,12 +65,15 @@ export const Footer = () => {
               Zephyra
             </Link>
             <p className={styles.description}>
-              Consultora especializada en sostenibilidad e impacto social.
-              Acompanamos a organizaciones en su camino hacia un futuro mas
+              Consultora especializada en sostenibilidad y triple impacto.
+              Acompañamos a organizaciones en su camino hacia un futuro más
               responsable y sostenible.
             </p>
             <div className={styles.contactInfo}>
-              <a href="mailto:info@zephyraconsultora.com" className={styles.contactLink}>
+              <a
+                href="mailto:info@zephyraconsultora.com"
+                className={styles.contactLink}
+              >
                 <svg
                   width="18"
                   height="18"
@@ -100,7 +103,7 @@ export const Footer = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                Rosario, Argentina
+                Argentina - España
               </span>
             </div>
           </div>
@@ -123,7 +126,8 @@ export const Footer = () => {
         {/* Bottom Section */}
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            &copy; {currentYear} Zephyra Consultora. Todos los derechos reservados.
+            &copy; {currentYear} Zephyra Consultora. Todos los derechos
+            reservados.
           </p>
           <div className={styles.socialLinks}>
             {socialLinks.map((social) => (
@@ -144,7 +148,7 @@ export const Footer = () => {
         {/* Developer Credit */}
         <div className={styles.developerCredit}>
           <p>
-            Desarrollado por{' '}
+            Desarrollado por{" "}
             <a
               href="https://carbono14.com"
               target="_blank"
