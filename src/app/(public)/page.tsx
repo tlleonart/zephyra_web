@@ -1,21 +1,21 @@
-import { HeroSection } from '@/components/public/HeroSection';
-import { HomePageContent } from '@/components/public/HomePageContent';
-import { ContactCTA } from '@/components/public/ContactCTA';
+import { HeroSection } from "@/components/public/HeroSection";
+import { HomePageContent } from "@/components/public/HomePageContent";
+import { ContactCTA } from "@/components/public/ContactCTA";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: 'Zephyra Consultora | Consultoría en Sostenibilidad',
+  title: "Zephyra Consultora | Consultoría en Sostenibilidad",
   description:
-    'Acompañamos a organizaciones en su transformación hacia prácticas más responsables con el medio ambiente y la sociedad.',
+    "Transformamos el compromiso con el triple impacto en estrategias concretas que generan valor real para empresas y organizaciones.",
 };
 
 export default function HomePage() {
   return (
     <>
       <HeroSection
-        title="Construyendo un futuro sostenible"
-        subtitle="Acompañamos a organizaciones en su transformación hacia prácticas más responsables con el medio ambiente y la sociedad."
+        title="Somos consultoría en sostenibilidad"
+        subtitle="Transformamos el compromiso con el triple impacto en estrategias concretas que generan valor real para empresas y organizaciones."
         ctaText="Conocé nuestros servicios"
         ctaHref="#servicios"
         backgroundImage="/images/hero-background.jpg"

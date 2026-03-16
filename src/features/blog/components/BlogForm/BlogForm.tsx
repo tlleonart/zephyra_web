@@ -25,8 +25,22 @@ interface BlogFormProps {
     coverStorageId?: Id<'_storage'>;
     authorId: Id<'teamMembers'>;
     status: 'draft' | 'published';
+    publishedAt?: number;
   };
 }
+
+const timestampToDatetimeLocal = (ts?: number): string => {
+  if (!ts) return '';
+  const d = new Date(ts);
+  const pad = (n: number) => n.toString().padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+};
+
+const datetimeLocalToTimestamp = (value: string): number | undefined => {
+  if (!value) return undefined;
+  const d = new Date(value);
+  return isNaN(d.getTime()) ? undefined : d.getTime();
+};
 
 export const BlogForm = ({ mode, initialData }: BlogFormProps) => {
   const router = useRouter();
@@ -47,6 +61,9 @@ export const BlogForm = ({ mode, initialData }: BlogFormProps) => {
   );
   const [status, setStatus] = useState<'draft' | 'published'>(
     initialData?.status || 'draft'
+  );
+  const [publishedAtStr, setPublishedAtStr] = useState(
+    timestampToDatetimeLocal(initialData?.publishedAt)
   );
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -78,6 +95,7 @@ export const BlogForm = ({ mode, initialData }: BlogFormProps) => {
         });
         success(saveStatus === 'published' ? 'Artículo publicado' : 'Borrador guardado');
       } else if (initialData) {
+        const publishedAt = datetimeLocalToTimestamp(publishedAtStr);
         await updatePost({
           id: initialData._id,
           title,
@@ -85,6 +103,7 @@ export const BlogForm = ({ mode, initialData }: BlogFormProps) => {
           content,
           coverStorageId: coverStorageId || undefined,
           authorId: authorId as Id<'teamMembers'>,
+          ...(publishedAt !== undefined ? { publishedAt } : {}),
         });
         success('Artículo actualizado');
       }
@@ -157,12 +176,23 @@ export const BlogForm = ({ mode, initialData }: BlogFormProps) => {
             </div>
 
             {mode === 'edit' && (
-              <div className={styles.statusInfo}>
-                <span className={styles.statusLabel}>Estado actual:</span>
-                <span className={`${styles.statusBadge} ${initialData?.status === 'published' ? styles.published : styles.draft}`}>
-                  {initialData?.status === 'published' ? 'Publicado' : 'Borrador'}
-                </span>
-              </div>
+              <>
+                <div className={styles.statusInfo}>
+                  <span className={styles.statusLabel}>Estado actual:</span>
+                  <span className={`${styles.statusBadge} ${initialData?.status === 'published' ? styles.published : styles.draft}`}>
+                    {initialData?.status === 'published' ? 'Publicado' : 'Borrador'}
+                  </span>
+                </div>
+                <div className={styles.sidebarField}>
+                  <Input
+                    label="Fecha de publicación"
+                    type="datetime-local"
+                    value={publishedAtStr}
+                    onChange={(e) => setPublishedAtStr(e.target.value)}
+                    hint="Fecha que se muestra públicamente"
+                  />
+                </div>
+              </>
             )}
           </CardContent>
           <CardFooter className={styles.sidebarFooter}>

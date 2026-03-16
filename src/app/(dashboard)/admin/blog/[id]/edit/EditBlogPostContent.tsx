@@ -44,6 +44,7 @@ export function EditBlogPostContent({ id }: EditBlogPostContentProps) {
         coverStorageId: post.coverStorageId,
         authorId: post.authorId,
         status: post.status,
+        publishedAt: post.publishedAt,
       }}
     />
   );

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useQuery } from 'convex/react';
-import { api } from '../../../../convex/_generated/api';
-import styles from './ServicesSection.module.css';
-import { Skeleton } from '@/components/ui/Skeleton/Skeleton';
-import Image from 'next/image';
+import { useQuery } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import styles from "./ServicesSection.module.css";
+import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
+import Image from "next/image";
 
 export const ServicesSection = () => {
   const blocks = useQuery(api.serviceBlocks.listPublic);
@@ -17,7 +17,9 @@ export const ServicesSection = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>Nuestros Servicios</h2>
           <p className={styles.description}>
-            Ofrecemos soluciones integrales para impulsar la sostenibilidad en tu organizacion
+            Diseñamos soluciones a medida para que cada organización pueda
+            integrar el impacto social y ambiental en el corazón de su
+            estrategia.
           </p>
         </div>
 
@@ -32,9 +34,22 @@ export const ServicesSection = () => {
                 <div className={styles.servicesGrid}>
                   {[1, 2, 3].map((m) => (
                     <div key={m} className={styles.card}>
-                      <Skeleton width={64} height={64} borderRadius="50%" style={{ margin: '0 auto' }} />
-                      <Skeleton width="70%" height={24} style={{ margin: '16px auto 0' }} />
-                      <Skeleton width="100%" height={48} style={{ marginTop: 8 }} />
+                      <Skeleton
+                        width={64}
+                        height={64}
+                        borderRadius="50%"
+                        style={{ margin: "0 auto" }}
+                      />
+                      <Skeleton
+                        width="70%"
+                        height={24}
+                        style={{ margin: "16px auto 0" }}
+                      />
+                      <Skeleton
+                        width="100%"
+                        height={48}
+                        style={{ marginTop: 8 }}
+                      />
                     </div>
                   ))}
                 </div>
@@ -69,10 +84,14 @@ export const ServicesSection = () => {
                   {block.services.map((service) => (
                     <div key={service._id} className={styles.card} tabIndex={0}>
                       <div className={styles.iconWrapper}>
-                        <span className="material-icons">{service.iconName}</span>
+                        <span className="material-icons">
+                          {service.iconName}
+                        </span>
                       </div>
                       <h4 className={styles.cardTitle}>{service.title}</h4>
-                      <p className={styles.cardDescription}>{service.description}</p>
+                      <p className={styles.cardDescription}>
+                        {service.description}
+                      </p>
                     </div>
                   ))}
                 </div>

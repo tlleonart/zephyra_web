@@ -1,12 +1,8 @@
 import { ProyectoDetailContent } from '@/components/public/ProyectoDetailContent';
-import styles from './ProyectoDetail.module.css';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 export default function ProyectoDetailPage() {
-  return (
-    <main className={styles.main}>
-      <ProyectoDetailContent />
-    </main>
-  );
+  return <ProyectoDetailContent />;
 }

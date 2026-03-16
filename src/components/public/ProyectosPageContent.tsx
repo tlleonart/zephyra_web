@@ -1,21 +1,22 @@
-'use client';
+"use client";
 
-import { useQuery } from 'convex/react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { api } from '../../../convex/_generated/api';
-import { Skeleton } from '@/components/ui/Skeleton';
-import { getProjectImage } from '@/lib/staticImages';
-import styles from '@/app/(public)/proyectos/ProyectosPage.module.css';
+import { useQuery } from "convex/react";
+import Link from "next/link";
+import Image from "next/image";
+import { api } from "../../../convex/_generated/api";
+import { Skeleton } from "@/components/ui/Skeleton";
+import { getProjectImage } from "@/lib/staticImages";
+import styles from "@/app/(public)/proyectos/ProyectosPage.module.css";
 
 export function ProyectosPageContent() {
   return (
     <>
       <section className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.title}>Nuestros Proyectos</h1>
+          <h1 className={styles.title}>Impacto en acción</h1>
           <p className={styles.subtitle}>
-            Conoce algunos de los proyectos en los que hemos trabajado junto a organizaciones comprometidas con la sostenibilidad.
+            Transformaciones reales en organizaciones que decidieron integrar el
+            impacto como motor de su crecimiento.
           </p>
         </div>
       </section>
@@ -80,7 +81,8 @@ function ProjectsGrid() {
               {project.achievements.length > 0 && (
                 <div className={styles.achievements}>
                   <span className={styles.achievementsCount}>
-                    {project.achievements.length} logro{project.achievements.length !== 1 ? 's' : ''}
+                    {project.achievements.length} logro
+                    {project.achievements.length !== 1 ? "s" : ""}
                   </span>
                 </div>
               )}

@@ -1,12 +1,8 @@
 import { ProyectosPageContent } from '@/components/public/ProyectosPageContent';
-import styles from './ProyectosPage.module.css';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 export default function ProyectosPage() {
-  return (
-    <main className={styles.main}>
-      <ProyectosPageContent />
-    </main>
-  );
+  return <ProyectosPageContent />;
 }

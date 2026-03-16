@@ -197,6 +197,7 @@ export const update = mutation({
     content: v.optional(v.string()),
     coverStorageId: v.optional(v.id("_storage")),
     authorId: v.optional(v.id("teamMembers")),
+    publishedAt: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     const post = await ctx.db.get(args.id);
@@ -213,6 +214,7 @@ export const update = mutation({
     if (args.content !== undefined) updates.content = args.content;
     if (args.coverStorageId !== undefined) updates.coverStorageId = args.coverStorageId;
     if (args.authorId !== undefined) updates.authorId = args.authorId;
+    if (args.publishedAt !== undefined) updates.publishedAt = args.publishedAt;
 
     // Handle slug update with uniqueness check
     if (args.slug !== undefined && args.slug !== post.slug) {

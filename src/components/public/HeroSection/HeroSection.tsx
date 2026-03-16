@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import styles from './HeroSection.module.css';
+import Link from "next/link";
+import styles from "./HeroSection.module.css";
 
 interface HeroSectionProps {
   title?: string;
@@ -12,11 +12,11 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({
-  title = 'Construyendo un futuro sostenible',
-  subtitle = 'Acompañamos a organizaciones en su transformación hacia prácticas más responsables con el medio ambiente y la sociedad.',
-  ctaText = 'Conocé nuestros servicios',
-  ctaHref = '#servicios',
-  backgroundImage = '/images/hero-bg.jpg',
+  title = "Somos consultoría en sostenibilidad",
+  subtitle = "Transformamos el compromiso con el triple impacto en estrategias concretas que generan valor real para empresas y organizaciones.",
+  ctaText = "Conocé nuestros servicios",
+  ctaHref = "#servicios",
+  backgroundImage = "/images/hero-bg.jpg",
 }: HeroSectionProps) => {
   return (
     <section className={styles.hero}>

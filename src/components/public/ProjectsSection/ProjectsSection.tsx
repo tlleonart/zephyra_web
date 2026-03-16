@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useQuery } from 'convex/react';
-import { api } from '../../../../convex/_generated/api';
-import styles from './ProjectsSection.module.css';
-import { Skeleton } from '@/components/ui/Skeleton/Skeleton';
-import Link from 'next/link';
-import Image from 'next/image';
-import { getProjectImage } from '@/lib/staticImages';
+import { useQuery } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import styles from "./ProjectsSection.module.css";
+import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
+import Link from "next/link";
+import Image from "next/image";
+import { getProjectImage } from "@/lib/staticImages";
 
 export const ProjectsSection = () => {
   const projects = useQuery(api.projects.listFeatured);
@@ -17,9 +17,10 @@ export const ProjectsSection = () => {
     <section id="proyectos" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Proyectos Destacados</h2>
+          <h2 className={styles.title}>Impacto en acción</h2>
           <p className={styles.description}>
-            Conoce algunos de los proyectos en los que hemos colaborado
+            Transformaciones reales en organizaciones que decidieron integrar el
+            impacto como motor de su crecimiento.
           </p>
         </div>
 
@@ -60,21 +61,29 @@ export const ProjectsSection = () => {
                       </div>
                     )}
                   </div>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.cardExcerpt}>{project.excerpt}</p>
-                  {project.achievements && project.achievements.length > 0 && (
-                    <ul className={styles.achievements}>
-                      {project.achievements.slice(0, 2).map((achievement) => (
-                        <li key={achievement._id} className={styles.achievement}>
-                          <span className="material-icons">check_circle</span>
-                          <span>{achievement.description}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </Link>
+                  <div className={styles.cardContent}>
+                    <h3 className={styles.cardTitle}>{project.title}</h3>
+                    <p className={styles.cardExcerpt}>{project.excerpt}</p>
+                    {project.achievements &&
+                      project.achievements.length > 0 && (
+                        <ul className={styles.achievements}>
+                          {project.achievements
+                            .slice(0, 2)
+                            .map((achievement) => (
+                              <li
+                                key={achievement._id}
+                                className={styles.achievement}
+                              >
+                                <span className="material-icons">
+                                  check_circle
+                                </span>
+                                <span>{achievement.description}</span>
+                              </li>
+                            ))}
+                        </ul>
+                      )}
+                  </div>
+                </Link>
               );
             })}
           </div>

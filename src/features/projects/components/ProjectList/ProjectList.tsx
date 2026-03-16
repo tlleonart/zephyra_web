@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useQuery, useMutation } from 'convex/react';
-import { api } from '../../../../../convex/_generated/api';
-import { Id } from '../../../../../convex/_generated/dataModel';
-import { Button } from '@/components/ui/Button';
-import { Table, Column } from '@/components/ui/Table';
-import { ConfirmDialog } from '@/components/ui/Modal';
-import { useToast } from '@/providers/ToastProvider';
-import { useState } from 'react';
-import styles from './ProjectList.module.css';
+import Link from "next/link";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../../../../../convex/_generated/api";
+import { Id } from "../../../../../convex/_generated/dataModel";
+import { Button } from "@/components/ui/Button";
+import { Table, Column } from "@/components/ui/Table";
+import { ConfirmDialog } from "@/components/ui/Modal";
+import { useToast } from "@/providers/ToastProvider";
+import { useState } from "react";
+import styles from "./ProjectList.module.css";
 
 interface ProjectAchievement {
-  _id: Id<'projectAchievements'>;
+  _id: Id<"projectAchievements">;
   description: string;
   displayOrder: number;
 }
 
 interface Project {
-  _id: Id<'projects'>;
+  _id: Id<"projects">;
   title: string;
   slug: string;
   excerpt: string;
@@ -31,7 +31,7 @@ interface Project {
 }
 
 interface ProjectListProps {
-  adminUserId: Id<'adminUsers'>;
+  adminUserId: Id<"adminUsers">;
 }
 
 export const ProjectList = ({ adminUserId }: ProjectListProps) => {
@@ -42,7 +42,9 @@ export const ProjectList = ({ adminUserId }: ProjectListProps) => {
 
   const [deleteTarget, setDeleteTarget] = useState<Project | null>(null);
   const [deleting, setDeleting] = useState(false);
-  const [filterFeatured, setFilterFeatured] = useState<'all' | 'featured' | 'regular'>('all');
+  const [filterFeatured, setFilterFeatured] = useState<
+    "all" | "featured" | "regular"
+  >("all");
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
@@ -50,10 +52,10 @@ export const ProjectList = ({ adminUserId }: ProjectListProps) => {
     setDeleting(true);
     try {
       await removeProject({ id: deleteTarget._id, adminUserId });
-      success('Proyecto movido a la papelera');
+      success("Proyecto movido a la papelera");
       setDeleteTarget(null);
     } catch (err) {
-      error(err instanceof Error ? err.message : 'Error al eliminar');
+      error(err instanceof Error ? err.message : "Error al eliminar");
     } finally {
       setDeleting(false);
     }
@@ -62,31 +64,36 @@ export const ProjectList = ({ adminUserId }: ProjectListProps) => {
   const handleToggleFeatured = async (project: Project) => {
     try {
       await toggleFeatured({ id: project._id });
-      success(project.isFeatured ? 'Proyecto desmarcado como destacado' : 'Proyecto marcado como destacado');
+      success(
+        project.isFeatured
+          ? "Proyecto desmarcado como destacado"
+          : "Proyecto marcado como destacado",
+      );
     } catch (err) {
-      error(err instanceof Error ? err.message : 'Error al cambiar estado');
+      error(err instanceof Error ? err.message : "Error al cambiar estado");
     }
   };
 
   const formatDate = (timestamp: number) => {
-    return new Intl.DateTimeFormat('es-AR', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
+    return new Intl.DateTimeFormat("es-AR", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
     }).format(new Date(timestamp));
   };
 
-  const filteredProjects = projects?.filter((project) => {
-    if (filterFeatured === 'all') return true;
-    if (filterFeatured === 'featured') return project.isFeatured;
-    return !project.isFeatured;
-  }) || [];
+  const filteredProjects =
+    projects?.filter((project) => {
+      if (filterFeatured === "all") return true;
+      if (filterFeatured === "featured") return project.isFeatured;
+      return !project.isFeatured;
+    }) || [];
 
   const columns: Column<Project>[] = [
     {
-      key: 'image',
-      header: '',
-      width: '80px',
+      key: "image",
+      header: "",
+      width: "80px",
       render: (project) => (
         <div className={styles.thumbnail}>
           {project.imageUrl ? (
@@ -99,15 +106,15 @@ export const ProjectList = ({ adminUserId }: ProjectListProps) => {
       ),
     },
     {
-      key: 'title',
-      header: 'Proyecto',
+      key: "title",
+      header: "Proyecto",
       render: (project) => (
         <div>
           <span className={styles.title}>{project.title}</span>
           <span className={styles.slug}>/{project.slug}</span>
         </div>
       ),
-    },
+    } /*
     {
       key: 'achievements',
       header: 'Logros',
@@ -116,35 +123,41 @@ export const ProjectList = ({ adminUserId }: ProjectListProps) => {
           {project.achievements.length} {project.achievements.length === 1 ? 'logro' : 'logros'}
         </span>
       ),
-    },
+    },*/,
     {
-      key: 'featured',
-      header: 'Destacado',
+      key: "featured",
+      header: "Destacado",
       render: (project) => (
         <button
           className={`${styles.badge} ${project.isFeatured ? styles.featured : styles.regular}`}
           onClick={() => handleToggleFeatured(project)}
-          title={project.isFeatured ? 'Clic para desmarcar como destacado' : 'Clic para destacar'}
+          title={
+            project.isFeatured
+              ? "Clic para desmarcar como destacado"
+              : "Clic para destacar"
+          }
         >
-          {project.isFeatured ? 'Destacado' : 'Regular'}
+          {project.isFeatured ? "Destacado" : "Regular"}
         </button>
       ),
     },
     {
-      key: 'date',
-      header: 'Creado',
+      key: "date",
+      header: "Creado",
       render: (project) => (
         <span className={styles.date}>{formatDate(project.createdAt)}</span>
       ),
     },
     {
-      key: 'actions',
-      header: '',
-      width: '120px',
+      key: "actions",
+      header: "",
+      width: "120px",
       render: (project) => (
         <div className={styles.actions}>
           <Link href={`/admin/projects/${project._id}/edit`}>
-            <Button variant="ghost" size="sm">Editar</Button>
+            <Button variant="ghost" size="sm">
+              Editar
+            </Button>
           </Link>
           <Button
             variant="ghost"
@@ -172,20 +185,20 @@ export const ProjectList = ({ adminUserId }: ProjectListProps) => {
 
       <div className={styles.filters}>
         <button
-          className={`${styles.filterButton} ${filterFeatured === 'all' ? styles.active : ''}`}
-          onClick={() => setFilterFeatured('all')}
+          className={`${styles.filterButton} ${filterFeatured === "all" ? styles.active : ""}`}
+          onClick={() => setFilterFeatured("all")}
         >
           Todos ({projects?.length || 0})
         </button>
         <button
-          className={`${styles.filterButton} ${filterFeatured === 'featured' ? styles.active : ''}`}
-          onClick={() => setFilterFeatured('featured')}
+          className={`${styles.filterButton} ${filterFeatured === "featured" ? styles.active : ""}`}
+          onClick={() => setFilterFeatured("featured")}
         >
           Destacados ({projects?.filter((p) => p.isFeatured).length || 0})
         </button>
         <button
-          className={`${styles.filterButton} ${filterFeatured === 'regular' ? styles.active : ''}`}
-          onClick={() => setFilterFeatured('regular')}
+          className={`${styles.filterButton} ${filterFeatured === "regular" ? styles.active : ""}`}
+          onClick={() => setFilterFeatured("regular")}
         >
           Regulares ({projects?.filter((p) => !p.isFeatured).length || 0})
         </button>
