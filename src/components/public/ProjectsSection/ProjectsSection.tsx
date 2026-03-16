@@ -64,7 +64,7 @@ export const ProjectsSection = () => {
                   <div className={styles.cardContent}>
                     <h3 className={styles.cardTitle}>{project.title}</h3>
                     <p className={styles.cardExcerpt}>{project.excerpt}</p>
-                    {project.achievements &&
+                    {/* {project.achievements &&
                       project.achievements.length > 0 && (
                         <ul className={styles.achievements}>
                           {project.achievements
@@ -81,7 +81,7 @@ export const ProjectsSection = () => {
                               </li>
                             ))}
                         </ul>
-                      )}
+                      )}*/}
                   </div>
                 </Link>
               );
