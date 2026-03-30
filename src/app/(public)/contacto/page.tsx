@@ -50,8 +50,8 @@ export default function ContactoPage() {
               <h2 className={styles.infoTitle}>Hablemos</h2>
               <p className={styles.infoText}>
                 ¿Querés medir el impacto de tu organización, mejorar tu
-                estrategia ESG o comunicar mejor lo que hacés? Contanos sobre tu
-                proyecto y te respondemos en menos de 48 horas.
+                estrategia de sostenibilidad o comunicar mejor lo que hacés?
+                Contanos y te respondemos en menos de 48 horas.
               </p>
 
               <div className={styles.contactMethods}>
@@ -211,7 +211,7 @@ export default function ContactoPage() {
                       required
                       rows={5}
                       className={styles.textarea}
-                      placeholder="¿En que podemos ayudarte?"
+                      placeholder="¿En qué podemos ayudarte?"
                     />
                   </div>
 

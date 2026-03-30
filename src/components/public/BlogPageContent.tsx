@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
-import { useQuery } from 'convex/react';
-import { api } from '../../../convex/_generated/api';
-import { BlogCard } from '@/components/public/BlogCard';
-import { Skeleton } from '@/components/ui/Skeleton';
-import styles from '@/app/(public)/blog/BlogPage.module.css';
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
+import { BlogCard } from "@/components/public/BlogCard";
+import { Skeleton } from "@/components/ui/Skeleton";
+import styles from "@/app/(public)/blog/BlogPage.module.css";
 
 export function BlogPageContent() {
   return (
     <>
       <section className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.title}>Blog</h1>
+          <h1 className={styles.title}>Perspectivas</h1>
           <p className={styles.subtitle}>
-            Descubre las ultimas novedades, tendencias e insights sobre consultoria y desarrollo de negocios.
+            Miradas estratégicas y herramientas útiles para integrar la
+            sostenibilidad y el triple impacto en las organizaciones.
           </p>
         </div>
       </section>
@@ -38,7 +39,8 @@ function BlogGrid() {
     return (
       <div className={styles.empty}>
         <p className={styles.emptyText}>
-          Aun no hay articulos publicados. Vuelve pronto para ver nuestro contenido.
+          Aun no hay articulos publicados. Vuelve pronto para ver nuestro
+          contenido.
         </p>
       </div>
     );

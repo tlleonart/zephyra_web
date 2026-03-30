@@ -5,7 +5,7 @@ const quickLinks = [
   { href: "/", label: "Inicio" },
   { href: "/#servicios", label: "Servicios" },
   { href: "/proyectos", label: "Proyectos" },
-  { href: "/blog", label: "Blog" },
+  { href: "/blog", label: "Perspectivas" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -31,7 +31,7 @@ const socialLinks = [
     ),
   },
   {
-    href: "https://linkedin.com/company/zephyraconsultora",
+    href: "https://www.linkedin.com/company/zephyra-consultora-de-impacto",
     label: "LinkedIn",
     icon: (
       <svg

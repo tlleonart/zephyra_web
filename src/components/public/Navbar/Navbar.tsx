@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { cn } from '@/lib/cn';
-import styles from './Navbar.module.css';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { cn } from "@/lib/cn";
+import styles from "./Navbar.module.css";
 
 const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/#servicios', label: 'Servicios' },
-  { href: '/#equipo', label: 'Equipo' },
-  { href: '/proyectos', label: 'Proyectos' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contacto', label: 'Contacto' },
+  { href: "/", label: "Inicio" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#equipo", label: "Equipo" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/blog", label: "Perspectivas" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 export const Navbar = () => {
@@ -24,18 +24,18 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
@@ -76,7 +76,7 @@ export const Navbar = () => {
         <button
           className={cn(styles.hamburger, isMobileMenuOpen && styles.active)}
           onClick={toggleMobileMenu}
-          aria-label={isMobileMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
+          aria-label={isMobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
           aria-expanded={isMobileMenuOpen}
         >
           <span className={styles.hamburgerLine}></span>

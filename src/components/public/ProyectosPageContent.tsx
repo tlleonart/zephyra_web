@@ -78,14 +78,6 @@ function ProjectsGrid() {
             <div className={styles.cardContent}>
               <h2 className={styles.cardTitle}>{project.title}</h2>
               <p className={styles.cardExcerpt}>{project.excerpt}</p>
-              {project.achievements.length > 0 && (
-                <div className={styles.achievements}>
-                  <span className={styles.achievementsCount}>
-                    {project.achievements.length} logro
-                    {project.achievements.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-              )}
             </div>
           </Link>
         );
