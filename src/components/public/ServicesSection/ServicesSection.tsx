@@ -88,7 +88,7 @@ export const ServicesSection = () => {
                 )}
                 <div
                   className={styles.servicesGrid}
-                  style={{ gridTemplateColumns: `repeat(${getBalancedColumns(block.services.length)}, 1fr)` }}
+                  style={{ '--service-columns': getBalancedColumns(block.services.length) } as React.CSSProperties}
                 >
                   {block.services.map((service) => (
                     <div key={service._id} className={styles.card} tabIndex={0}>

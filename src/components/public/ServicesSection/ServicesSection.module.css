@@ -110,6 +110,7 @@
 
 .servicesGrid {
   display: grid;
+  grid-template-columns: repeat(var(--service-columns, 3), 1fr);
   gap: var(--spacing-lg);
   padding: var(--spacing-xl);
 }
