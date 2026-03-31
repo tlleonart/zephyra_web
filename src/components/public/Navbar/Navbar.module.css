@@ -11,6 +11,14 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
+.header.menuOpen {
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  z-index: calc(var(--z-modal) + 1);
+}
+
 .header.scrolled {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);

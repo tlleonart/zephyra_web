@@ -3,8 +3,7 @@
 import { ServicesSection } from '@/components/public/ServicesSection';
 import { ProjectsSection } from '@/components/public/ProjectsSection';
 import { TeamSection } from '@/components/public/TeamSection';
-import { ClientsSection } from '@/components/public/ClientsSection';
-import { AlliancesSection } from '@/components/public/AlliancesSection';
+import { TrustSection } from '@/components/public/TrustSection';
 
 export function HomePageContent() {
   return (
@@ -12,8 +11,7 @@ export function HomePageContent() {
       <ServicesSection />
       <ProjectsSection />
       <TeamSection />
-      <ClientsSection />
-      <AlliancesSection />
+      <TrustSection />
     </>
   );
 }

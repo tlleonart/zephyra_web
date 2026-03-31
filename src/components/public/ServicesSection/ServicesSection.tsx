@@ -6,6 +6,12 @@ import styles from "./ServicesSection.module.css";
 import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
 import Image from "next/image";
 
+function getBalancedColumns(count: number): number {
+  if (count <= 3) return count;
+  if (count === 4) return 2;
+  return 3;
+}
+
 export const ServicesSection = () => {
   const blocks = useQuery(api.serviceBlocks.listPublic);
 
@@ -80,7 +86,10 @@ export const ServicesSection = () => {
                     <p className={styles.blockSubtitle}>{block.subtitle}</p>
                   </div>
                 )}
-                <div className={styles.servicesGrid}>
+                <div
+                  className={styles.servicesGrid}
+                  style={{ gridTemplateColumns: `repeat(${getBalancedColumns(block.services.length)}, 1fr)` }}
+                >
                   {block.services.map((service) => (
                     <div key={service._id} className={styles.card} tabIndex={0}>
                       <div className={styles.iconWrapper}>

@@ -26,9 +26,9 @@ npm test; npm run lint
 TypeScript 5.x, Node.js 20.9+: Follow standard conventions
 
 ## Recent Changes
+- 007-homepage-ui-polish: Added TypeScript 5.7.2, Node.js 20.9+ + Next.js 15.1.0, React 19.0.0, Convex 1.17.4
 - 005-services-redesign: Added TypeScript 5.7.2, Node.js 20.9+ + Next.js 15.1.0, React 19.0.0, Convex 1.17.4
 - 004-team-editor-fixes: Added TypeScript 5.7.2, Node.js 20.9+ + Next.js 15.1.0, React 19.0.0, Convex 1.17.4
-- 003-service-blocks: Added TypeScript 5.7.2, Node.js 20.9+ + Next.js 15.1.0, React 19.0.0, Convex 1.17.4
 
 
 <!-- MANUAL ADDITIONS START -->

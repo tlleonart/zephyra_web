@@ -38,6 +38,8 @@
 .card {
   text-align: center;
   padding: var(--spacing-lg);
+  background-color: var(--color-brand-secondary);
+  border-radius: var(--radius-lg);
 }
 
 .imageWrapper {
