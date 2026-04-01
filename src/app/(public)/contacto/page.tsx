@@ -26,12 +26,28 @@ export default function ContactoPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission - in production, this would send to an API
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const res = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          content: formState.company
+            ? `[${formState.company}]\n\n${formState.message}`
+            : formState.message,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormState({ name: "", email: "", company: "", message: "" });
+      if (!res.ok) throw new Error("Error al enviar");
+
+      setSubmitted(true);
+      setFormState({ name: "", email: "", company: "", message: "" });
+    } catch {
+      alert("Hubo un error al enviar el mensaje. Por favor intentá de nuevo.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

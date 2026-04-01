@@ -2,7 +2,7 @@
 
 import { ConvexHttpClient } from 'convex/browser';
 import { api } from '../../../../convex/_generated/api';
-import { Resend } from 'resend';
+import { createTransport } from 'nodemailer';
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -21,12 +21,20 @@ export const requestPasswordReset = async (
 
     // If we got a token, send the email
     if (result.token && result.userEmail) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
+      const transporter = createTransport({
+        host: 'c2810738.ferozo.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+      });
 
       const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${result.token}`;
 
-      await resend.emails.send({
-        from: 'Zephyra Consultora <noreply@zephyraconsultora.com>',
+      await transporter.sendMail({
+        from: `"Zephyra Consultora" <${process.env.EMAIL_USER}>`,
         to: result.userEmail,
         subject: 'Restablecer contraseña - Zephyra Consultora',
         html: `
